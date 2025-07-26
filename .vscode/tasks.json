@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "📚 Actualización Semanal",
+            "type": "shell",
+            "command": "${workspaceFolder}/actualizar_progreso.bat",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Actualiza automáticamente el progreso semanal en GitHub"
+        },
+        {
+            "label": "🔄 Sync Quick",
+            "type": "shell",
+            "command": "git",
+            "args": ["add", ".", "&&", "git", "commit", "-m", "💾 Cambios rápidos", "&&", "git", "push"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": [],
+            "detail": "Sincronización rápida de cambios con GitHub"
+        }
+    ]
+}
