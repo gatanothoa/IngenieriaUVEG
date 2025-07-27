@@ -47,24 +47,35 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-REM Mostrar estado de archivos
-git status
-echo.
-
 REM Contar archivos modificados
 for /f %%i in ('type temp_status.txt ^| find /c /v ""') do set COUNT=%%i
 del temp_status.txt
 
 if %COUNT%==0 (
+    echo.
+    echo 🎉 ================================
+    echo     ¡TODO ESTÁ ACTUALIZADO!
+    echo 🎉 ================================
+    echo.
     echo ℹ️  No hay cambios nuevos para subir
-    echo    Tu repositorio ya está actualizado
+    echo    Tu repositorio ya está sincronizado con GitHub
     echo.
     echo 🔗 Repositorio: https://github.com/gatanothoa/IngenieriaUVEG
+    echo.
+    echo 📈 Últimos commits:
+    git log --oneline -3 --color=never
+    echo.
+    echo ✨ ¡Perfecto! No necesitas hacer nada más
     pause
     exit /b 0
 )
 
 echo 📝 Se encontraron %COUNT% cambios para actualizar
+echo.
+
+REM Mostrar qué archivos van a cambiar
+echo 📄 Archivos que se van a actualizar:
+git status --porcelain
 echo.
 
 REM Agregar todos los cambios
@@ -86,7 +97,19 @@ set HORA=%HORA: =%
 
 git commit -m "📚 Progreso actualizado - %FECHA% %HORA%"
 if %errorlevel% neq 0 (
-    echo ❌ Error al crear el commit
+    echo.
+    echo ❌ ===============================================
+    echo     ERROR: No se pudo crear el commit
+    echo ❌ ===============================================
+    echo.
+    echo 💡 Esto puede pasar si:
+    echo    • No hay cambios reales para guardar
+    echo    • Los archivos ya están actualizados
+    echo    • Hay un problema con la configuración de Git
+    echo.
+    echo 🔍 Verifica el estado actual:
+    git status
+    echo.
     pause
     exit /b 1
 )
