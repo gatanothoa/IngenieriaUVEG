@@ -2,23 +2,23 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "📚 Actualización Semanal",
+            "label": "📚 Actualizar Progreso",
             "type": "shell",
-            "command": "${workspaceFolder}/actualizar_progreso.bat",
+            "command": "${workspaceFolder}/actualizar.bat",
             "group": "build",
             "presentation": {
                 "echo": true,
                 "reveal": "always",
-                "focus": false,
+                "focus": true,
                 "panel": "new",
-                "showReuseMessage": true,
-                "clear": false
+                "showReuseMessage": false,
+                "clear": true
             },
             "problemMatcher": [],
-            "detail": "Actualiza automáticamente el progreso semanal en GitHub"
+            "detail": "Actualiza automáticamente tu progreso en GitHub con verificaciones completas"
         },
         {
-            "label": "🔄 Sync Quick",
+            "label": "🔄 Sync Rápido",
             "type": "shell",
             "command": "git",
             "args": ["add", ".", "&&", "git", "commit", "-m", "💾 Cambios rápidos", "&&", "git", "push"],
@@ -30,7 +30,7 @@
                 "panel": "new"
             },
             "problemMatcher": [],
-            "detail": "Sincronización rápida de cambios con GitHub"
+            "detail": "Sincronización rápida sin verificaciones (solo para cambios menores)"
         }
     ]
 }
