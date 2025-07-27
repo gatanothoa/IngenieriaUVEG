@@ -35,4 +35,4 @@ git log --oneline -5
 
 echo.
 echo Presiona cualquier tecla para continuar...
-pause >nul
+pause >nul 
