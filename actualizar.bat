@@ -3,6 +3,11 @@ cls
 REM ===========================================
 REM       SCRIPT DE ACTUALIZACIÓN AUTOMÁTICA
 REM       Actualiza tu progreso en GitHub
+REM
+REM   💡 FORMAS DE USAR:
+REM   1. Doble clic en este archivo (MÁS RÁPIDO)
+REM   2. VS Code: Ctrl+Shift+P → "Actualizar Progreso"
+REM   3. Terminal: .\actualizar.bat
 REM ===========================================
 
 echo.
