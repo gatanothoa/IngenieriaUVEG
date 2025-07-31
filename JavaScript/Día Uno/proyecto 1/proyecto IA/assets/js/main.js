@@ -386,33 +386,51 @@ class CounterAnimations {
     }
     
     init() {
+        // Verificar inmediatamente sin esperar scroll
+        setTimeout(() => {
+            this.checkCounters();
+        }, 1000);
+        
         this.bindEvents();
-        this.checkCounters();
     }
     
     bindEvents() {
         window.addEventListener('scroll', throttle(() => this.checkCounters(), 100));
+        // También verificar en resize por si acaso
+        window.addEventListener('resize', throttle(() => this.checkCounters(), 200));
     }
     
     checkCounters() {
         this.counters.forEach(counter => {
-            if (!this.animated.has(counter) && isInViewport(counter, 100)) {
-                this.animateCounter(counter);
-                this.animated.add(counter);
+            if (!this.animated.has(counter)) {
+                const rect = counter.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                
+                // Verificar si está visible (más tolerante)
+                if (rect.top <= windowHeight && rect.bottom >= 0) {
+                    this.animateCounter(counter);
+                    this.animated.add(counter);
+                }
             }
         });
     }
     
     animateCounter(element) {
         const target = parseInt(element.getAttribute('data-count'));
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
+        const duration = 2000; // 2 segundos
+        const startTime = Date.now();
         
         const updateCounter = () => {
-            current += step;
-            if (current < target) {
-                element.textContent = Math.floor(current);
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Usar función easing suave
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const current = Math.floor(target * easeOutQuart);
+            
+            element.textContent = current;
+            
+            if (progress < 1) {
                 requestAnimationFrame(updateCounter);
             } else {
                 element.textContent = target;
@@ -771,6 +789,35 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = 'auto';
         }
     }
+    
+    // FORZAR CONTADORES DESPUÉS DE 3 SEGUNDOS SI NO SE HAN ANIMADO
+    setTimeout(() => {
+        const counters = document.querySelectorAll('[data-count]');
+        counters.forEach(counter => {
+            if (counter.textContent === '0') {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const startTime = Date.now();
+                
+                const updateCounter = () => {
+                    const elapsed = Date.now() - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                    const current = Math.floor(target * easeOutQuart);
+                    
+                    counter.textContent = current;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            }
+        });
+    }, 3000);
 });
 
 // Fallback adicional - ocultar pantalla de carga independientemente
