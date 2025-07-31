@@ -2,22 +2,37 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#ff6600">
     <title>ArcoExpress de México - Especialistas en Etiquetas y Etiquetado</title>
     <meta name="description" content="Especialistas en etiquetas térmicas, ribbons e impresoras. Más de 20 años de experiencia en identificación de producto terminado.">
     <meta name="keywords" content="etiquetas térmicas, ribbons, impresoras, identificación industrial, señalización">
+    
+    <!-- Preload critical resources for mobile -->
+    <link rel="preload" href="assets/css/main.css" as="style">
+    <link rel="preload" href="assets/css/responsive.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/animations.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/mobile-ultra.css">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts optimized for mobile -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Font Awesome optimized -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="all">
+    
+    <!-- PWA Icons for mobile -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo-arcoexpress.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo-arcoexpress.svg">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -395,7 +410,13 @@
                 </div>
                 
                 <div class="contact-form" data-aos="fade-left">
-                    <form id="contact-form" class="form">
+                    <form id="contact-form" class="form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <!-- Campo oculto para spam protection -->
+                        <input type="hidden" name="form-name" value="contact" />
+                        <div style="display: none;">
+                            <label>No llenar si eres humano: <input name="bot-field" /></label>
+                        </div>
+                        
                         <div class="form-group">
                             <label for="name">Nombre Completo *</label>
                             <input type="text" id="name" name="name" required>
@@ -515,7 +536,7 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- JavaScript Files -->
+    <!-- JavaScript Files optimized for mobile -->
     <script>
         // Script de emergencia para ocultar pantalla de carga
         setTimeout(function() {
@@ -526,6 +547,7 @@
             }
         }, 1500);
     </script>
+    <script src="assets/js/mobile-optimizations.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/animations.js"></script>
     <script src="assets/js/forms.js"></script>

@@ -197,7 +197,7 @@ a:focus {
 }
 
 .loading-logo img {
-    width: 200px;
+    width: 250px;
     height: auto;
     filter: brightness(1.2);
 }
@@ -255,7 +255,7 @@ a:focus {
 }
 
 .nav-logo {
-    height: 65px;
+    height: 85px;
     width: auto;
     transition: all var(--transition-fast);
 }
@@ -1115,7 +1115,7 @@ a:focus {
 }
 
 .footer-logo img {
-    height: 55px;
+    height: 70px;
     margin-bottom: var(--spacing-lg);
 }
 

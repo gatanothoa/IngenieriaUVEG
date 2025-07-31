@@ -1,42 +1,48 @@
 /* ==========================================================================
-   ARCOEXPRESS MAIN JAVASCRIPT
+   ARCOEXPRESS MAIN JAVASCRIPT - OPTIMIZADO PARA MÓVIL
    ========================================================================== */
 
-// Configuración global
+// Configuración global optimizada para móvil
 const CONFIG = {
     breakpoints: {
-        mobile: 768,
-        tablet: 992,
-        desktop: 1200
+        mobile: 767,
+        tablet: 991,
+        desktop: 1199
     },
     animations: {
-        duration: 300,
-        easing: 'ease-in-out'
+        duration: 250, // Más rápido en móvil
+        easing: 'ease-out'
     },
     scroll: {
-        offset: 100,
+        offset: 80, // Menos offset en móvil
         smooth: true
+    },
+    touch: {
+        swipeThreshold: 50,
+        tapTimeout: 300
     }
 };
 
 // Estado global de la aplicación
 const APP_STATE = {
     isLoading: true,
-    isMobile: window.innerWidth < CONFIG.breakpoints.mobile,
+    isMobile: window.innerWidth <= CONFIG.breakpoints.mobile,
+    isTouch: 'ontouchstart' in window,
     currentSection: 'inicio',
     navOpen: false,
-    scrollPosition: 0
+    scrollPosition: 0,
+    lastTouchTime: 0
 };
 
 /* ==========================================================================
-   UTILIDADES
+   UTILIDADES OPTIMIZADAS PARA MÓVIL
    ========================================================================== */
 
 // Utilidades DOM
 const $ = selector => document.querySelector(selector);
 const $$ = selector => document.querySelectorAll(selector);
 
-// Debounce function
+// Debounce function optimizado
 const debounce = (func, wait) => {
     let timeout;
     return function executedFunction(...args) {
@@ -47,6 +53,30 @@ const debounce = (func, wait) => {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+};
+
+// Throttle function para scroll en móvil
+const throttle = (func, limit) => {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+};
+
+// Detectar tipo de dispositivo
+const isMobileDevice = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
+// Detectar orientación móvil
+const getOrientation = () => {
+    return window.innerHeight > window.innerWidth ? 'portrait' : 'landscape';
 };
 
 // Throttle function
