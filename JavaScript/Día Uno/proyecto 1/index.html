@@ -2,169 +2,416 @@
 <html lang="es">
 
 <head>
-    <title>Antonio Córdova Carmona - Biografía Profesional</title>
+    <title>CthulhuBook - Antonio Córdova | Red Social de los Antiguos</title>
+    <style>
+        @keyframes cthulhuPulse {
+            0% { 
+                transform: scale(1) rotate(0deg);
+                text-shadow: 0 0 10px #4338ca;
+            }
+            25% { 
+                transform: scale(1.1) rotate(-2deg);
+                text-shadow: 0 0 15px #6366f1;
+            }
+            50% { 
+                transform: scale(1) rotate(0deg);
+                text-shadow: 0 0 20px #818cf8;
+            }
+            75% { 
+                transform: scale(1.1) rotate(2deg);
+                text-shadow: 0 0 15px #6366f1;
+            }
+            100% { 
+                transform: scale(1) rotate(0deg);
+                text-shadow: 0 0 10px #4338ca;
+            }
+        }
+        
+        .cthulhu-animated {
+            display: inline-block;
+            animation: cthulhuPulse 3s ease-in-out infinite;
+            transform-origin: center;
+        }
+    </style>
 </head>
 
-<body style="background-color: #f8f9fa; font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; line-height: 1.6;">
+<body style="background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%); font-family: 'Courier New', monospace; margin: 0; padding: 0; min-height: 100vh; color: #c7d2fe;">
 
     <!-- ========================================= -->
-    <!-- ENCABEZADO PRINCIPAL                      -->
+    <!-- HEADER NAVIGATION BAR                     -->
     <!-- ========================================= -->
-    <center>
-        <h1 style="color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px;">
-            <strong>ANTONIO CÓRDOVA CARMONA</strong>
-        </h1>
-        <p style="font-size: 18px; color: #7f8c8d;">
-            <em>Estudiante de Ingeniería en Programación</em>
-        </p>
-    </center>
-
-    <br><br>
-
-    <!-- ========================================= -->
-    <!-- FOTO Y PRESENTACIÓN                       -->
-    <!-- ========================================= -->
-    <img src="imagenes/image.png" 
-         width="25%" 
-         alt="Antonio Córdova Carmona"
-         align="right"
-         style="border: 4px solid #3498db; border-radius: 10px; margin-left: 20px;">
-
-    <h2 style="color: #2c3e50; border-left: 5px solid #e74c3c; padding-left: 15px;">
-        👋 Presentación
-    </h2>
-    
-    <p style="text-align: justify; font-size: 16px; color: #34495e;">
-        <strong>¡Hola!</strong> Soy Antonio Córdova Carmona, y esta es mi biografía profesional. 
-        Un joven de <strong>40 años</strong> con una historia única y gran pasión por la programación 
-        y el arte.
-    </p>
-
-    <br clear="all"><br>
-
-    <!-- ========================================= -->
-    <!-- DATOS PERSONALES - TABLA INFORMATIVA     -->
-    <!-- ========================================= -->
-    <h2 style="color: #2c3e50; border-left: 5px solid #27ae60; padding-left: 15px;">
-        📋 Información Personal
-    </h2>
-    
-    <table style="width: 100%; border-collapse: collapse;">
-        <tr>
-            <td style="padding: 8px; background-color: #ecf0f1; width: 30%; font-weight: bold;">Nombre Completo:</td>
-            <td style="padding: 8px;">Antonio Córdova Carmona</td>
-        </tr>
-        <tr>
-            <td style="padding: 8px; background-color: #ecf0f1; font-weight: bold;">Edad:</td>
-            <td style="padding: 8px;"><del style="color: #e74c3c;">40 años</del> <strong>39 años</strong></td>
-        </tr>
-        <tr>
-            <td style="padding: 8px; background-color: #ecf0f1; font-weight: bold;">Fecha de Nacimiento:</td>
-            <td style="padding: 8px;">9 de mayo de 1985</td>
-        </tr>
-        <tr>
-            <td style="padding: 8px; background-color: #ecf0f1; font-weight: bold;">Lugar de Origen:</td>
-            <td style="padding: 8px;">Puebla, México 🇲🇽</td>
-        </tr>
-        <tr>
-            <td style="padding: 8px; background-color: #ecf0f1; font-weight: bold;">Email:</td>
-            <td style="padding: 8px;"><u>antonio.cordova.c@gmail.com</u></td>
-        </tr>
-        <tr>
-            <td style="padding: 8px; background-color: #ecf0f1; font-weight: bold;">Teléfono:</td>
-            <td style="padding: 8px;">221-389-2693</td>
-        </tr>
-        <tr>
-            <td style="padding: 8px; background-color: #ecf0f1; font-weight: bold;">Dirección:</td>
-            <td style="padding: 8px;">Quinta Ciruelos, Huejotzingo, Puebla</td>
-        </tr>
-        <tr>
-            <td style="padding: 8px; background-color: #ecf0f1; font-weight: bold;">Estado Civil:</td>
-            <td style="padding: 8px;">Soltero</td>
-        </tr>
-        <tr>
-            <td style="padding: 8px; background-color: #ecf0f1; font-weight: bold;">Ocupación Actual:</td>
-            <td style="padding: 8px;"><em>Estudiante de Programación</em></td>
-        </tr>
-    </table>
-
-    <br><br>
-
-    <!-- ========================================= -->
-    <!-- MI HISTORIA PERSONAL                      -->
-    <!-- ========================================= -->
-    <h2 style="color: #2c3e50; border-left: 5px solid #9b59b6; padding-left: 15px;">
-        📖 Mi Historia
-    </h2>
-    
-    <p style="text-align: justify; font-size: 16px; color: #34495e; background-color: #ecf0f1; padding: 15px; border-radius: 8px;">
-        Nací un <strong>miércoles 9 de mayo de 1985</strong> en la ciudad de Puebla, en el hospital de San Alejandro. 
-        Mi nacimiento fue complicado: a los pocos días una terrible enfermedad me afectó, y por alguna razón 
-        me llevaron primero a bautizar antes que a urgencias. <em>¡Pero felizmente aquí estoy, vivo y dando lata!</em>
-    </p>
-
-    <p style="text-align: justify; font-size: 16px; color: #34495e;">
-        Luego de eso he vivido <strong>40 hermosos años</strong> llenos de paz, alegría, momentos oscuros e incertidumbre, 
-        pero siempre con el corazón lleno de fe y con el deseo de superarme y encontrar mi camino.
-    </p>
-
-    <p style="text-align: justify; font-size: 16px; color: #34495e;">
-        Ahora sueño con ser un <strong>ingeniero</strong>, tener un título y encontrar el sentido a mi vida. 
-        No sé si pueda desenvolverme completamente en lo que estudié, pero será un ejemplo en mi vida y un 
-        motivo suficiente para perseguir mis sueños.
-    </p>
+    <div style="background: linear-gradient(90deg, #0a0a1a 0%, #1e1e3f 100%); padding: 12px 20px; border-bottom: 2px solid #4338ca; box-shadow: 0 4px 20px rgba(67, 56, 202, 0.3);">
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="width: 300px;">
+                    <h1 style="color: #818cf8; margin: 0; font-size: 24px; text-shadow: 0 0 10px #4338ca;">
+                        <span class="cthulhu-animated">🐙</span> <strong>CthulhuBook</strong>
+                    </h1>
+                    <small style="color: #6366f1; font-style: italic;">
+                        <em>"Red Social de los Antiguos"</em>
+                    </small>
+                </td>
+                <td style="text-align: center;">
+                    <div style="background: #1e1b4b; padding: 8px 15px; border-radius: 25px; border: 1px solid #4338ca;">
+                        <small style="color: #a5b4fc;">🔍 Buscar en los abismos del conocimiento...</small>
+                    </div>
+                </td>
+                <td style="width: 200px; text-align: right;">
+                    <div style="color: #c7d2fe;">
+                        <small>👤 <strong>Mensajes</strong> | 🔔 <strong>Notificaciones</strong></small>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <br>
 
     <!-- ========================================= -->
-    <!-- INTERESES Y HOBBIES                       -->
+    <!-- MAIN CONTAINER                            -->
     <!-- ========================================= -->
-    <h2 style="color: #2c3e50; border-left: 5px solid #f39c12; padding-left: 15px;">
-        🎨 Mis Intereses y Hobbies
-    </h2>
-    
-    <p style="font-size: 16px; color: #34495e;">
-        Me apasionan muchas actividades que enriquecen mi vida diaria:
-    </p>
-    
-    <ul style="font-size: 16px; color: #34495e; line-height: 1.8;">
-        <li><strong>💪 Gimnasio:</strong> Mantener mi cuerpo y mente en forma</li>
-        <li><strong>🎨 Dibujo:</strong> Especialmente temas de terror y misterio</li>
-        <li><strong>🎵 Música:</strong> Relajación y inspiración</li>
-        <li><strong>🎮 Videojuegos:</strong> Entretenimiento y desafíos mentales</li>
-        <li><strong>🎬 Películas:</strong> Especialmente del género de terror</li>
-        <li><strong>💻 Programación:</strong> Mi nueva pasión y futuro profesional</li>
-        <li><strong>🔍 Misterios:</strong> Investigación de temas paranormales</li>
-    </ul>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
 
-    <br><br>
+        <!-- ========================================= -->
+        <!-- SIDEBAR IZQUIERDO                         -->
+        <!-- ========================================= -->
+        <div style="float: left; width: 25%; margin-right: 20px;">
+            
+            <!-- PERFIL CARD -->
+            <div style="background: linear-gradient(145deg, #1e1b4b, #312e81); padding: 20px; border-radius: 15px; border: 1px solid #4338ca; box-shadow: 0 8px 25px rgba(0,0,0,0.4); margin-bottom: 20px;">
+                <center>
+                    <img src="imagenes/image.png" 
+                         width="80%" 
+                         alt="Antonio Córdova - Investigador de lo Oculto"
+                         style="border: 3px solid #6366f1; border-radius: 50%; box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);">
+                    
+                    <h2 style="color: #c7d2fe; margin: 15px 0 5px 0; font-size: 18px;">
+                        <strong>Antonio Córdova Carmona</strong>
+                    </h2>
+                    <p style="color: #a5b4fc; margin: 0; font-size: 14px;">
+                        <em>Investigador de Misterios Antiguos</em>
+                    </p>
+                    <small style="color: #6b7280;">
+                        <em>📍 Puebla, México | 🕰️ En línea</em>
+                    </small>
+                </center>
+                
+                <hr style="border: 1px solid #4338ca; margin: 15px 0;">
+                
+                <div style="font-size: 14px;">
+                    <p style="margin: 8px 0; color: #a5b4fc;">
+                        👁️ <strong>Seguidores:</strong> 1,547 cultistas
+                    </p>
+                    <p style="margin: 8px 0; color: #a5b4fc;">
+                        🌟 <strong>Siguiendo:</strong> 89 entidades
+                    </p>
+                    <p style="margin: 8px 0; color: #a5b4fc;">
+                        📜 <strong>Publicaciones:</strong> 234 revelaciones
+                    </p>
+                </div>
+            </div>
+
+            <!-- NAVIGATION MENU -->
+            <div style="background: linear-gradient(145deg, #1e1b4b, #312e81); padding: 15px; border-radius: 15px; border: 1px solid #4338ca; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
+                <h3 style="color: #818cf8; margin-top: 0; font-size: 16px;">
+                    🧭 <strong>Navegación</strong>
+                </h3>
+                <div style="font-size: 14px;">
+                    <p style="margin: 10px 0; color: #c7d2fe; padding: 8px; background: #4338ca; border-radius: 8px;">
+                        🏠 <strong>Inicio</strong>
+                    </p>
+                    <p style="margin: 10px 0; color: #a5b4fc; padding: 8px;">
+                        👥 Cultistas
+                    </p>
+                    <p style="margin: 10px 0; color: #a5b4fc; padding: 8px;">
+                        <a href="dibujos.html" style="color: #a5b4fc; text-decoration: none;">
+                            🎨 Galería Oscura
+                        </a>
+                    </p>
+                    <p style="margin: 10px 0; color: #a5b4fc; padding: 8px;">
+                        � Biblioteca Prohibida
+                    </p>
+                    <p style="margin: 10px 0; color: #a5b4fc; padding: 8px;">
+                        🌌 Eventos Cósmicos
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- ========================================= -->
+        <!-- CONTENIDO PRINCIPAL - FEED               -->
+        <!-- ========================================= -->
+        <div style="float: left; width: 70%;">
+
+            <!-- CREAR PUBLICACIÓN -->
+            <div style="background: linear-gradient(145deg, #1e1b4b, #312e81); padding: 20px; border-radius: 15px; border: 1px solid #4338ca; box-shadow: 0 8px 25px rgba(0,0,0,0.4); margin-bottom: 20px;">
+                <h3 style="color: #818cf8; margin-top: 0; font-size: 16px;">
+                    📝 <strong>¿Qué misterios has descubierto hoy?</strong>
+                </h3>
+                <div style="background: #0f172a; padding: 15px; border-radius: 10px; border: 1px solid #374151;">
+                    <p style="color: #9ca3af; margin: 0; font-style: italic;">
+                        Comparte tus revelaciones con la hermandad...
+                    </p>
+                </div>
+                <br>
+                <div style="text-align: right;">
+                    <small style="background: #4338ca; color: white; padding: 8px 15px; border-radius: 20px;">
+                        📢 <strong>Publicar Revelación</strong>
+                    </small>
+                </div>
+            </div>
+
+            <!-- PUBLICACIÓN 1 - BIOGRAFÍA -->
+            <div style="background: linear-gradient(145deg, #1e1b4b, #312e81); padding: 25px; border-radius: 15px; border: 1px solid #4338ca; box-shadow: 0 8px 25px rgba(0,0,0,0.4); margin-bottom: 20px;">
+                
+                <!-- Header del post -->
+                <div style="border-bottom: 1px solid #4338ca; padding-bottom: 15px; margin-bottom: 20px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td style="width: 50px;">
+                                <img src="imagenes/image.png" 
+                                     width="40" 
+                                     alt="Antonio"
+                                     style="border-radius: 50%; border: 2px solid #6366f1;">
+                            </td>
+                            <td>
+                                <strong style="color: #c7d2fe; font-size: 16px;">Antonio Córdova</strong><br>
+                                <small style="color: #9ca3af;">
+                                    <em>hace 2 horas • 🌍 Puebla, México</em>
+                                </small>
+                            </td>
+                            <td style="text-align: right; width: 50px;">
+                                <small style="color: #6b7280;">⋯</small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Contenido del post -->
+                <h2 style="color: #818cf8; margin-top: 0;">
+                    � <strong>Mi Origen en los Misterios</strong>
+                </h2>
+                
+                <p style="color: #c7d2fe; line-height: 1.6; font-size: 15px;">
+                    <strong>🌟 Salve, hermanos investigadores!</strong> Soy <strong>Antonio Córdova Carmona</strong>, 
+                    nacido en un <strong>miércoles 9 de mayo de 1985</strong> durante una conjunción cósmica 
+                    extraordinaria en Puebla, México. 
+                </p>
+
+                <p style="color: #a5b4fc; line-height: 1.6; font-size: 14px; background: #0f172a; padding: 15px; border-radius: 10px; border-left: 4px solid #6366f1;">
+                    <em>Mi llegada a este plano fue... complicada. Una misteriosa enfermedad me aquejó 
+                    en mis primeros días, llevándome primero al ritual del bautismo antes que a la 
+                    medicina mortal. <strong>Pero los Antiguos tenían planes para mí...</strong></em>
+                </p>
+
+                <p style="color: #c7d2fe; line-height: 1.6; font-size: 15px;">
+                    Durante estos <strong>39 años de existencia</strong>, he caminado entre luces y sombras, 
+                    enfrentando momentos de revelación y períodos de oscuridad que forjaron mi alma. 
+                    Ahora busco convertirme en un <strong>ingeniero de realidades</strong>, dominando 
+                    tanto el código como los secretos del universo.
+                </p>
+
+                <!-- Información personal como "about" de Facebook -->
+                <div style="background: #0f172a; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="color: #6366f1; margin-top: 0; font-size: 16px;">
+                        📋 <strong>Registro en el Necronomicón</strong>
+                    </h3>
+                    
+                    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                        <tr>
+                            <td style="padding: 8px; color: #9ca3af; width: 35%;"><strong>🏺 Nombre Completo:</strong></td>
+                            <td style="padding: 8px; color: #c7d2fe;">Antonio Córdova Carmona</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; color: #9ca3af;"><strong>⏳ Años en este Plano:</strong></td>
+                            <td style="padding: 8px; color: #c7d2fe;">39 años de existencia terrenal</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; color: #9ca3af;"><strong>� Portal de Entrada:</strong></td>
+                            <td style="padding: 8px; color: #c7d2fe;">9 de mayo de 1985 - Miércoles cósmico</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; color: #9ca3af;"><strong>🗺️ Coordenadas Actuales:</strong></td>
+                            <td style="padding: 8px; color: #c7d2fe;">Quinta Ciruelos, Huejotzingo, Puebla</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; color: #9ca3af;"><strong>📧 Comunicación Astral:</strong></td>
+                            <td style="padding: 8px; color: #c7d2fe;"><u>antonio.cordova.c@gmail.com</u></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; color: #9ca3af;"><strong>📱 Invocación Directa:</strong></td>
+                            <td style="padding: 8px; color: #c7d2fe;">221-389-2693</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; color: #9ca3af;"><strong>� Estado Ritual:</strong></td>
+                            <td style="padding: 8px; color: #c7d2fe;">Soltero - Dedicado al conocimiento</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; color: #9ca3af;"><strong>🎓 Misión Actual:</strong></td>
+                            <td style="padding: 8px; color: #c7d2fe;"><em>Estudiante de Ingeniería en Programación</em></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Interacciones como Facebook -->
+                <div style="border-top: 1px solid #374151; padding-top: 15px; margin-top: 20px;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                        <tr>
+                            <td style="color: #6b7280; padding: 8px; border-right: 1px solid #374151;">
+                                <small>👁️ <strong>47</strong> miradas</small>
+                            </td>
+                            <td style="color: #6b7280; padding: 8px; border-right: 1px solid #374151;">
+                                <small>🖤 <strong>13</strong> adoraciones</small>
+                            </td>
+                            <td style="color: #6b7280; padding: 8px;">
+                                <small>💬 <strong>5</strong> susurros</small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <hr style="border: 1px solid #374151; margin: 15px 0;">
+
+                <div style="text-align: center;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding: 10px; text-align: center;">
+                                <small style="color: #9ca3af;">🖤 <strong>Adorar</strong></small>
+                            </td>
+                            <td style="padding: 10px; text-align: center;">
+                                <small style="color: #9ca3af;">💬 <strong>Susurrar</strong></small>
+                            </td>
+                            <td style="padding: 10px; text-align: center;">
+                                <small style="color: #9ca3af;">📤 <strong>Compartir</strong></small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PUBLICACIÓN 2 - INTERESES -->
+            <div style="background: linear-gradient(145deg, #1e1b4b, #312e81); padding: 25px; border-radius: 15px; border: 1px solid #4338ca; box-shadow: 0 8px 25px rgba(0,0,0,0.4); margin-bottom: 20px;">
+                
+                <!-- Header del post -->
+                <div style="border-bottom: 1px solid #4338ca; padding-bottom: 15px; margin-bottom: 20px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td style="width: 50px;">
+                                <img src="imagenes/image.png" 
+                                     width="40" 
+                                     alt="Antonio"
+                                     style="border-radius: 50%; border: 2px solid #6366f1;">
+                            </td>
+                            <td>
+                                <strong style="color: #c7d2fe; font-size: 16px;">Antonio Córdova</strong><br>
+                                <small style="color: #9ca3af;">
+                                    <em>hace 4 horas • 🌌 Actualización de estado</em>
+                                </small>
+                            </td>
+                            <td style="text-align: right; width: 50px;">
+                                <small style="color: #6b7280;">⋯</small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Contenido del post -->
+                <h2 style="color: #818cf8; margin-top: 0;">
+                    🌟 <strong>Mis Rituales y Actividades Secretas</strong>
+                </h2>
+                
+                <p style="color: #c7d2fe; line-height: 1.6; font-size: 15px;">
+                    Hermanos investigadores, aquí están las <strong>prácticas que fortalecen mi alma</strong> 
+                    y me preparan para los misterios venideros:
+                </p>
+
+                <!-- Lista de intereses como posts de FB -->
+                <div style="background: #0f172a; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                    <ul style="color: #a5b4fc; line-height: 2; font-size: 14px; margin: 0;">
+                        <li><strong>💪 Entrenamiento Físico:</strong> Fortalecimiento del templo corporal en el gimnasio</li>
+                        <li><strong>🎨 Arte Oscuro:</strong> Canalización de visiones a través del dibujo (temas de terror y misterio)</li>
+                        <li><strong>🎵 Vibraciones Cósmicas:</strong> Meditación musical para conectar con dimensiones superiores</li>
+                        <li><strong>🎮 Realidades Virtuales:</strong> Exploración de mundos digitales y desafíos mentales</li>
+                        <li><strong>🎬 Cinematografía del Terror:</strong> Estudio de manifestaciones sobrenaturales en film</li>
+                        <li><strong>💻 Codificación Mística:</strong> Programación como nueva forma de magia moderna</li>
+                        <li><strong>🔍 Investigación Paranormal:</strong> Búsqueda de verdades ocultas y fenómenos inexplicables</li>
+                    </ul>
+                </div>
+
+                <p style="color: #c7d2fe; line-height: 1.6; font-size: 15px; font-style: italic;">
+                    <em>"Cada actividad es un paso hacia la iluminación... ¿Qué misterios compartirás tú conmigo?"</em>
+                </p>
+
+                <!-- CTA para la galería -->
+                <div style="background: linear-gradient(90deg, #4338ca, #6366f1); padding: 15px; border-radius: 10px; margin: 20px 0; text-align: center;">
+                    <h3 style="color: white; margin: 0; font-size: 16px;">
+                        🎨 <strong>¡Explora Mi Galería Oscura!</strong>
+                    </h3>
+                    <p style="color: #e0e7ff; margin: 10px 0; font-size: 14px;">
+                        Descubre mis creaciones artísticas donde la realidad se encuentra con lo sobrenatural
+                    </p>
+                    <a href="dibujos.html" 
+                       target="_blank" 
+                       style="background: #1e1b4b; color: #c7d2fe; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; border: 2px solid #818cf8;">
+                        👁️ REVELAR GALERÍA PROHIBIDA
+                    </a>
+                </div>
+
+                <!-- Interacciones -->
+                <div style="border-top: 1px solid #374151; padding-top: 15px; margin-top: 20px;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                        <tr>
+                            <td style="color: #6b7280; padding: 8px; border-right: 1px solid #374151;">
+                                <small>👁️ <strong>23</strong> miradas</small>
+                            </td>
+                            <td style="color: #6b7280; padding: 8px; border-right: 1px solid #374151;">
+                                <small>🖤 <strong>8</strong> adoraciones</small>
+                            </td>
+                            <td style="color: #6b7280; padding: 8px;">
+                                <small>💬 <strong>3</strong> susurros</small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <hr style="border: 1px solid #374151; margin: 15px 0;">
+
+                <div style="text-align: center;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding: 10px; text-align: center;">
+                                <small style="color: #9ca3af;">🖤 <strong>Adorar</strong></small>
+                            </td>
+                            <td style="padding: 10px; text-align: center;">
+                                <small style="color: #9ca3af;">💬 <strong>Susurrar</strong></small>
+                            </td>
+                            <td style="padding: 10px; text-align: center;">
+                                <small style="color: #9ca3af;">📤 <strong>Compartir</strong></small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Clear float -->
+        <div style="clear: both;"></div>
+
+    </div>
 
     <!-- ========================================= -->
-    <!-- CALL TO ACTION - ENLACE A GALERÍA        -->
+    <!-- FOOTER GLOBAL                             -->
     <!-- ========================================= -->
-    <center style="background-color: #34495e; color: white; padding: 20px; border-radius: 10px;">
-        <h3 style="margin-top: 0;">🎨 ¡Descubre mi Arte!</h3>
-        <p style="font-size: 16px;">
-            Me gusta dibujar temas de terror y misterio. Te invito a conocer mi trabajo artístico.
-        </p>
-        <br>
-        <a href="dibujos.html" 
-           target="_blank" 
-           style="background-color: #e74c3c; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
-            📂 VER MIS DIBUJOS
-        </a>
-    </center>
-
-    <br><br>
-
-    <!-- ========================================= -->
-    <!-- FOOTER                                    -->
-    <!-- ========================================= -->
-    <center>
-        <small style="color: #7f8c8d;">
-            <em>Biografía actualizada - 2025 | Proyecto Día 1 - Programador Web</em>
-        </small>
-    </center>
+    <footer style="background: linear-gradient(90deg, #0a0a1a 0%, #1e1e3f 100%); padding: 20px; margin-top: 40px; border-top: 2px solid #4338ca; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <p style="color: #6b7280; margin: 0; font-size: 14px;">
+                <em>🐙 CthulhuBook © 2025 | "La red social donde los misterios cobran vida" | Antonio Córdova Carmona</em>
+            </p>
+            <small style="color: #4b5563; margin-top: 10px; display: block;">
+                <em>Proyecto HTML Día 1 - Programador Web | Inspirado en los Mitos de Cthulhu</em>
+            </small>
+        </div>
+    </footer>
 
 </body>
 </html>
