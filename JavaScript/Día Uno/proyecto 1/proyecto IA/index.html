@@ -151,7 +151,7 @@
                         <i class="fas fa-award"></i>
                     </div>
                     <div class="stat-number" data-count="100">0</div>
-                    <div class="stat-label">% Calidad Garantizada</div>
+                    <div class="stat-label">Calidad Garantizada</div>
                 </div>
             </div>
         </div>
@@ -546,6 +546,47 @@
                 document.body.style.overflow = 'auto';
             }
         }, 1500);
+        
+        // SCRIPT DIRECTO PARA CONTADORES - FORZAR ANIMACIÓN
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                // Obtener todos los contadores
+                const counters = [
+                    { element: document.querySelector('[data-count="20"]'), target: 20, suffix: '' },
+                    { element: document.querySelector('[data-count="500"]'), target: 500, suffix: '' },
+                    { element: document.querySelector('[data-count="1000"]'), target: 1000, suffix: '' },
+                    { element: document.querySelector('[data-count="100"]'), target: 100, suffix: '%' }
+                ];
+                
+                // Animar cada contador
+                counters.forEach(function(counter) {
+                    if (counter.element) {
+                        animateCounterDirect(counter.element, counter.target, counter.suffix);
+                    }
+                });
+                
+                function animateCounterDirect(element, target, suffix) {
+                    const duration = 2000;
+                    const startTime = Date.now();
+                    
+                    function updateCounter() {
+                        const elapsed = Date.now() - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const current = Math.floor(target * progress);
+                        
+                        element.textContent = current + suffix;
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            element.textContent = target + suffix;
+                        }
+                    }
+                    
+                    updateCounter();
+                }
+            }, 2000); // Esperar 2 segundos para asegurar que la página esté cargada
+        });
     </script>
     <script src="assets/js/mobile-optimizations.js"></script>
     <script src="assets/js/main.js"></script>
