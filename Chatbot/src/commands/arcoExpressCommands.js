@@ -10,7 +10,7 @@ class ArcoExpressCommands {
             email: 'ventas@arcoexpress.mx',
             phone: '+52 222 210 61 44',
             phone2: '+52 222 210 61 40',
-            whatsapp: '+52 222 750 68 55'
+            whatsapp: '+52 221 794 6704'
         };
         
         this.productos = {

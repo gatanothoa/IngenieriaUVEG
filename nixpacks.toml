@@ -1,0 +1,14 @@
+# Railway Nixpacks Configuration
+[phases.setup]
+dependsOn = []
+
+[phases.install]
+dependsOn = ["setup"]
+cmds = ["cd Chatbot && npm install"]
+
+[phases.build]
+dependsOn = ["install"]
+cmds = ["cd Chatbot && npm run build || echo 'No build script'"]
+
+[start]
+cmd = "cd Chatbot && npm start"

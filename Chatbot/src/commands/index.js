@@ -1,15 +1,8 @@
 // COMANDOS PRINCIPALES DEL CHATBOT
 const axios = require('axios');
 const moment = require('moment');
-con                           `🛠️ *HERRAMIENTAS ADICIONALES:*\n` +
-                           `• *4* - Impresoras industriales\n` +
-                           `• */clima* - Consultar el clima\n` +
-                           `• */hora* - Ver fecha y hora\n\n` +
-                           `📊 *INFORMACIÓN:*\n` +
-                           `• *8* - Información de ArcoExpress\n` +
-                           `• *9* - Guía completa de comandos\n\n` +
-                           `🏷️ *ArcoExpress - ${this.companyInfo.experience}*\n` +
-                           `¿En qué puedo ayudarte hoy? Solo escribe el número 🤔`;ressCommands = require('./arcoExpressCommands');
+const ArcoExpressCommands = require('./arcoExpressCommands');
+
 moment.locale('es');
 
 class Commands {
