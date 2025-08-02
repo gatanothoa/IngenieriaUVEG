@@ -1,8 +1,5 @@
-/* ==========================================================================
-   OPTIMIZACIONES ESPECÍFICAS PARA MÓVIL - ARCOEXPRESS
-   ========================================================================== */
+// OPTIMIZACIONES ESPECÍFICAS PARA DISPOSITIVOS MÓVILES
 
-// Configuración móvil
 const MOBILE_CONFIG = {
     touchEvents: {
         swipeThreshold: 50,
@@ -14,23 +11,17 @@ const MOBILE_CONFIG = {
         maxZoom: 5.0
     },
     performance: {
-        scrollThrottle: 16, // 60fps
+        scrollThrottle: 16,
         resizeThrottle: 100
     }
 };
 
-/* ==========================================================================
-   FUNCIONES DE OPTIMIZACIÓN MÓVIL
-   ========================================================================== */
-
-// Optimizar rendimiento en móvil
+// OPTIMIZACIÓN DE RENDIMIENTO MÓVIL
 const optimizeMobilePerformance = () => {
-    // Reducir calidad de imágenes en conexiones lentas
     if (navigator.connection && navigator.connection.effectiveType === 'slow-2g') {
         document.body.classList.add('low-bandwidth');
     }
     
-    // Lazy loading para imágenes
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -48,7 +39,6 @@ const optimizeMobilePerformance = () => {
         });
     }
     
-    // Preload crítico para móvil
     const criticalResources = [
         'assets/css/responsive.css',
         'assets/images/logo-arcoexpress.svg'
@@ -63,14 +53,13 @@ const optimizeMobilePerformance = () => {
     });
 };
 
-// Gestos táctiles mejorados
+// GESTOS TÁCTILES AVANZADOS
 const setupTouchGestures = () => {
     let touchStartX = 0;
     let touchStartY = 0;
     let touchEndX = 0;
     let touchEndY = 0;
     
-    // Swipe para cerrar menú móvil
     const navMenu = document.getElementById('nav-menu');
     if (navMenu) {
         navMenu.addEventListener('touchstart', (e) => {
@@ -90,14 +79,11 @@ const setupTouchGestures = () => {
         const diffX = touchStartX - touchEndX;
         const diffY = touchStartY - touchEndY;
         
-        // Swipe left para cerrar menú
         if (Math.abs(diffX) > Math.abs(diffY) && diffX > swipeThreshold) {
             closeMenu();
         }
     }
 };
-
-// Optimizar scroll en móvil
 const optimizeMobileScroll = () => {
     let isScrolling = false;
     
@@ -135,15 +121,13 @@ const optimizeMobileScroll = () => {
     });
 };
 
-// Mejorar formularios en móvil
+// OPTIMIZACIÓN DE FORMULARIOS MÓVIL
 const optimizeMobileForms = () => {
     const form = document.getElementById('contact-form');
     if (!form) return;
     
-    // Mejorar inputs en móvil
     const inputs = form.querySelectorAll('input, select, textarea');
     inputs.forEach(input => {
-        // Evitar zoom en iOS
         if (input.type === 'email' || input.type === 'tel') {
             input.addEventListener('focus', () => {
                 if (window.innerWidth <= 767) {
@@ -164,7 +148,6 @@ const optimizeMobileForms = () => {
             });
         }
         
-        // Validación visual en tiempo real
         input.addEventListener('input', function() {
             if (this.validity.valid) {
                 this.classList.remove('error');
@@ -176,17 +159,14 @@ const optimizeMobileForms = () => {
         });
     });
     
-    // Mejorar envío del formulario en móvil
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Mostrar loading en móvil
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         submitBtn.disabled = true;
         
-        // Simulación de envío (reemplazar con tu lógica)
         setTimeout(() => {
             submitBtn.innerHTML = '<i class="fas fa-check"></i> ¡Enviado!';
             setTimeout(() => {
@@ -197,13 +177,12 @@ const optimizeMobileForms = () => {
     });
 };
 
-// Optimizar botones flotantes en móvil
+// OPTIMIZACIÓN DE BOTONES FLOTANTES
 const optimizeFloatingButtons = () => {
     const whatsappBtn = document.querySelector('.whatsapp-float');
     const backToTopBtn = document.querySelector('.back-to-top');
     
     if (whatsappBtn) {
-        // Mejorar posición en móvil según orientación
         const adjustPosition = () => {
             if (window.innerWidth <= 767) {
                 const orientation = getOrientation();
@@ -216,13 +195,11 @@ const optimizeFloatingButtons = () => {
                 }
             }
         };
-        
         adjustPosition();
         window.addEventListener('orientationchange', () => {
             setTimeout(adjustPosition, 100);
         });
         
-        // Haptic feedback en dispositivos compatibles
         whatsappBtn.addEventListener('touchstart', () => {
             if (navigator.vibrate) {
                 navigator.vibrate(50);
@@ -230,7 +207,6 @@ const optimizeFloatingButtons = () => {
         }, { passive: true });
     }
     
-    // Mejorar back to top para móvil
     if (backToTopBtn) {
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({
@@ -245,7 +221,7 @@ const optimizeFloatingButtons = () => {
     }
 };
 
-// Detectar y manejar cambios de orientación
+// MANEJO DE CAMBIOS DE ORIENTACIÓN
 const handleOrientationChange = () => {
     let lastOrientation = getOrientation();
     
@@ -253,16 +229,13 @@ const handleOrientationChange = () => {
         setTimeout(() => {
             const newOrientation = getOrientation();
             if (newOrientation !== lastOrientation) {
-                // Reajustar layout después del cambio de orientación
                 document.body.classList.toggle('landscape', newOrientation === 'landscape');
                 document.body.classList.toggle('portrait', newOrientation === 'portrait');
                 
-                // Cerrar menú si está abierto
                 if (APP_STATE.navOpen) {
                     closeMenu();
                 }
                 
-                // Trigger resize event
                 window.dispatchEvent(new Event('resize'));
                 lastOrientation = newOrientation;
             }
@@ -270,7 +243,7 @@ const handleOrientationChange = () => {
     });
 };
 
-// Función helper para cerrar menú
+// FUNCIONES DE UTILIDAD PARA MÓVIL
 const closeMenu = () => {
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
@@ -283,11 +256,9 @@ const closeMenu = () => {
     }
 };
 
-// Función helper para actualizar posición de scroll
 const updateScrollPosition = () => {
     APP_STATE.scrollPosition = window.pageYOffset;
     
-    // Actualizar navbar en móvil
     const navbar = document.getElementById('navbar');
     if (navbar && window.innerWidth <= 767) {
         if (APP_STATE.scrollPosition > 50) {
@@ -297,7 +268,6 @@ const updateScrollPosition = () => {
         }
     }
     
-    // Mostrar/ocultar back to top
     const backToTopBtn = document.querySelector('.back-to-top');
     if (backToTopBtn) {
         if (APP_STATE.scrollPosition > 300) {
@@ -308,13 +278,8 @@ const updateScrollPosition = () => {
     }
 };
 
-/* ==========================================================================
-   INICIALIZACIÓN DE OPTIMIZACIONES MÓVIL
-   ========================================================================== */
-
-// Inicializar todas las optimizaciones móviles
+// INICIALIZACIÓN DE OPTIMIZACIONES MÓVIL
 const initMobileOptimizations = () => {
-    // Solo ejecutar en dispositivos móviles
     if (window.innerWidth <= 767 || isMobileDevice()) {
         console.log('Inicializando optimizaciones móvil...');
         
@@ -325,21 +290,18 @@ const initMobileOptimizations = () => {
         optimizeFloatingButtons();
         handleOrientationChange();
         
-        // Agregar clase móvil al body
         document.body.classList.add('mobile-optimized');
         
         console.log('Optimizaciones móvil aplicadas ✅');
     }
 };
 
-// Ejecutar cuando el DOM esté listo
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMobileOptimizations);
 } else {
     initMobileOptimizations();
 }
 
-// Re-evaluar en resize
 window.addEventListener('resize', debounce(() => {
     APP_STATE.isMobile = window.innerWidth <= 767;
     if (APP_STATE.isMobile && !document.body.classList.contains('mobile-optimized')) {

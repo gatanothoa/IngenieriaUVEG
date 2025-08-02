@@ -1,8 +1,4 @@
-/* ==========================================================================
-   ARCOEXPRESS MAIN JAVASCRIPT - OPTIMIZADO PARA MÓVIL
-   ========================================================================== */
-
-// Configuración global optimizada para móvil
+// CONFIGURACIÓN GLOBAL
 const CONFIG = {
     breakpoints: {
         mobile: 767,
@@ -10,39 +6,29 @@ const CONFIG = {
         desktop: 1199
     },
     animations: {
-        duration: 250, // Más rápido en móvil
+        duration: 250,
         easing: 'ease-out'
     },
     scroll: {
-        offset: 80, // Menos offset en móvil
+        offset: 80,
         smooth: true
-    },
-    touch: {
-        swipeThreshold: 50,
-        tapTimeout: 300
     }
 };
 
-// Estado global de la aplicación
+// ESTADO DE LA APLICACIÓN
 const APP_STATE = {
     isLoading: true,
     isMobile: window.innerWidth <= CONFIG.breakpoints.mobile,
-    isTouch: 'ontouchstart' in window,
     currentSection: 'inicio',
     navOpen: false,
-    scrollPosition: 0,
-    lastTouchTime: 0
+    scrollPosition: 0
 };
 
-/* ==========================================================================
-   UTILIDADES OPTIMIZADAS PARA MÓVIL
-   ========================================================================== */
-
-// Utilidades DOM
+// UTILIDADES DOM
 const $ = selector => document.querySelector(selector);
 const $$ = selector => document.querySelectorAll(selector);
 
-// Debounce function optimizado
+// FUNCIONES DE OPTIMIZACIÓN
 const debounce = (func, wait) => {
     let timeout;
     return function executedFunction(...args) {
@@ -55,31 +41,6 @@ const debounce = (func, wait) => {
     };
 };
 
-// Throttle function para scroll en móvil
-const throttle = (func, limit) => {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    }
-};
-
-// Detectar tipo de dispositivo
-const isMobileDevice = () => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-};
-
-// Detectar orientación móvil
-const getOrientation = () => {
-    return window.innerHeight > window.innerWidth ? 'portrait' : 'landscape';
-};
-
-// Throttle function
 const throttle = (func, limit) => {
     let inThrottle;
     return function() {
@@ -93,7 +54,7 @@ const throttle = (func, limit) => {
     };
 };
 
-// Detectar si un elemento está en viewport
+// DETECCIÓN DE VIEWPORT
 const isInViewport = (element, offset = 0) => {
     const rect = element.getBoundingClientRect();
     return (
@@ -104,12 +65,12 @@ const isInViewport = (element, offset = 0) => {
     );
 };
 
-// Smooth scroll
+// SCROLL SUAVE
 const smoothScrollTo = (target, duration = 1000) => {
     const targetElement = typeof target === 'string' ? $(target) : target;
     if (!targetElement) return;
     
-    const targetPosition = targetElement.offsetTop - 80; // Offset for navbar
+    const targetPosition = targetElement.offsetTop - 80;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
     let startTime = null;
@@ -132,14 +93,10 @@ const smoothScrollTo = (target, duration = 1000) => {
     requestAnimationFrame(animation);
 };
 
-/* ==========================================================================
-   LOADING SCREEN
-   ========================================================================== */
-
+// PANTALLA DE CARGA
 class LoadingScreen {
     constructor() {
         this.element = $('#loading-screen');
-        this.startTime = Date.now();
         this.init();
     }
     
@@ -158,18 +115,15 @@ class LoadingScreen {
     init() {
         document.body.style.overflow = 'hidden';
         
-        // Ocultar inmediatamente si el documento ya está cargado
         if (document.readyState === 'complete') {
             setTimeout(() => this.hide(), 100);
             return;
         }
         
-        // Ocultar cuando se complete la carga
         window.addEventListener('load', () => {
             setTimeout(() => this.hide(), 200);
         });
         
-        // Fallback obligatorio - siempre ocultar después de 1 segundo
         setTimeout(() => {
             if (APP_STATE.isLoading) {
                 this.hide();
@@ -178,10 +132,7 @@ class LoadingScreen {
     }
 }
 
-/* ==========================================================================
-   NAVEGACIÓN
-   ========================================================================== */
-
+// SISTEMA DE NAVEGACIÓN
 class Navigation {
     constructor() {
         this.navbar = $('#navbar');
@@ -189,7 +140,6 @@ class Navigation {
         this.navMenu = $('#nav-menu');
         this.navLinks = $$('.nav-link');
         this.isScrolled = false;
-        
         this.init();
     }
     
@@ -197,28 +147,19 @@ class Navigation {
         this.bindEvents();
         this.setActiveLink();
     }
-    
     bindEvents() {
-        // Toggle móvil
         if (this.navToggle) {
             this.navToggle.addEventListener('click', () => this.toggleMobileMenu());
         }
         
-        // Navegación suave
         this.navLinks.forEach(link => {
             link.addEventListener('click', (e) => this.handleNavClick(e));
         });
         
-        // Scroll navbar
         window.addEventListener('scroll', throttle(() => this.handleScroll(), 10));
-        
-        // Resize
         window.addEventListener('resize', debounce(() => this.handleResize(), 250));
-        
-        // Cerrar menú al hacer click fuera
         document.addEventListener('click', (e) => this.handleOutsideClick(e));
     }
-    
     toggleMobileMenu() {
         APP_STATE.navOpen = !APP_STATE.navOpen;
         
@@ -230,7 +171,6 @@ class Navigation {
             this.navMenu.classList.toggle('active');
         }
         
-        // Prevenir scroll del body cuando el menú está abierto
         document.body.style.overflow = APP_STATE.navOpen ? 'hidden' : 'auto';
     }
     
@@ -249,7 +189,6 @@ class Navigation {
             document.body.style.overflow = 'auto';
         }
     }
-    
     handleNavClick(e) {
         e.preventDefault();
         const target = e.target.getAttribute('href');
@@ -268,7 +207,6 @@ class Navigation {
         const scrollY = window.pageYOffset;
         APP_STATE.scrollPosition = scrollY;
         
-        // Navbar scroll effect
         const shouldBeScrolled = scrollY > 50;
         if (shouldBeScrolled !== this.isScrolled) {
             this.isScrolled = shouldBeScrolled;
@@ -277,7 +215,6 @@ class Navigation {
             }
         }
         
-        // Update active link based on scroll position
         this.updateActiveLinkOnScroll();
     }
     
@@ -285,7 +222,6 @@ class Navigation {
         const wasMobile = APP_STATE.isMobile;
         APP_STATE.isMobile = window.innerWidth < CONFIG.breakpoints.mobile;
         
-        // Si cambió de móvil a desktop, cerrar menú
         if (wasMobile && !APP_STATE.isMobile) {
             this.closeMobileMenu();
         }
@@ -298,7 +234,6 @@ class Navigation {
             this.closeMobileMenu();
         }
     }
-    
     setActiveLink(activeHref = null) {
         this.navLinks.forEach(link => {
             link.classList.remove('active');
@@ -329,10 +264,7 @@ class Navigation {
     }
 }
 
-/* ==========================================================================
-   SCROLL ANIMATIONS
-   ========================================================================== */
-
+// ANIMACIONES AL HACER SCROLL
 class ScrollAnimations {
     constructor() {
         this.elements = $$('[data-aos]');
@@ -374,10 +306,7 @@ class ScrollAnimations {
     }
 }
 
-/* ==========================================================================
-   COUNTER ANIMATIONS
-   ========================================================================== */
-
+// CONTADORES ANIMADOS
 class CounterAnimations {
     constructor() {
         this.counters = $$('[data-count]');
@@ -386,7 +315,6 @@ class CounterAnimations {
     }
     
     init() {
-        // Verificar inmediatamente sin esperar scroll
         setTimeout(() => {
             this.checkCounters();
         }, 1000);
@@ -396,7 +324,6 @@ class CounterAnimations {
     
     bindEvents() {
         window.addEventListener('scroll', throttle(() => this.checkCounters(), 100));
-        // También verificar en resize por si acaso
         window.addEventListener('resize', throttle(() => this.checkCounters(), 200));
     }
     
@@ -406,7 +333,6 @@ class CounterAnimations {
                 const rect = counter.getBoundingClientRect();
                 const windowHeight = window.innerHeight || document.documentElement.clientHeight;
                 
-                // Verificar si está visible (más tolerante)
                 if (rect.top <= windowHeight && rect.bottom >= 0) {
                     this.animateCounter(counter);
                     this.animated.add(counter);
@@ -417,14 +343,13 @@ class CounterAnimations {
     
     animateCounter(element) {
         const target = parseInt(element.getAttribute('data-count'));
-        const duration = 2000; // 2 segundos
+        const duration = 2000;
         const startTime = Date.now();
         
         const updateCounter = () => {
             const elapsed = Date.now() - startTime;
             const progress = Math.min(elapsed / duration, 1);
             
-            // Usar función easing suave
             const easeOutQuart = 1 - Math.pow(1 - progress, 4);
             const current = Math.floor(target * easeOutQuart);
             
@@ -441,10 +366,7 @@ class CounterAnimations {
     }
 }
 
-/* ==========================================================================
-   BACK TO TOP BUTTON
-   ========================================================================== */
-
+// BOTÓN VOLVER ARRIBA
 class BackToTop {
     constructor() {
         this.button = $('#back-to-top');
@@ -472,10 +394,7 @@ class BackToTop {
     }
 }
 
-/* ==========================================================================
-   FORMULARIO DE CONTACTO
-   ========================================================================== */
-
+// FORMULARIO DE CONTACTO
 class ContactForm {
     constructor() {
         this.form = $('#contact-form');
@@ -492,7 +411,6 @@ class ContactForm {
     bindEvents() {
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
         
-        // Validación en tiempo real
         const inputs = this.form.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
             input.addEventListener('blur', () => this.validateField(input));
@@ -501,9 +419,8 @@ class ContactForm {
     }
     
     setupValidation() {
-        // Configurar reglas de validación personalizadas
+        
     }
-    
     validateField(field) {
         const value = field.value.trim();
         const type = field.type;
@@ -511,13 +428,11 @@ class ContactForm {
         let isValid = true;
         let errorMessage = '';
         
-        // Validar campo requerido
         if (required && !value) {
             isValid = false;
             errorMessage = 'Este campo es requerido';
         }
         
-        // Validar email
         if (type === 'email' && value) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(value)) {
@@ -526,7 +441,6 @@ class ContactForm {
             }
         }
         
-        // Validar teléfono
         if (type === 'tel' && value) {
             const phoneRegex = /^[\d\s\-\+\(\)]+$/;
             if (!phoneRegex.test(value) || value.length < 10) {
@@ -538,7 +452,6 @@ class ContactForm {
         this.showFieldError(field, isValid, errorMessage);
         return isValid;
     }
-    
     showFieldError(field, isValid, message) {
         const formGroup = field.closest('.form-group');
         const errorElement = formGroup.querySelector('.error-message');
@@ -583,18 +496,15 @@ class ContactForm {
         
         this.submitForm();
     }
-    
     async submitForm() {
         const formData = new FormData(this.form);
         const submitBtn = this.form.querySelector('button[type="submit"]');
         
-        // Mostrar estado de carga
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         submitBtn.disabled = true;
         
         try {
-            // Simular envío (aquí iría la lógica real de envío)
             await this.simulateSubmit(formData);
             
             this.showAlert('¡Mensaje enviado correctamente! Te contactaremos pronto.', 'success');
@@ -613,7 +523,6 @@ class ContactForm {
     simulateSubmit(formData) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                // Simular éxito/error aleatorio
                 Math.random() > 0.1 ? resolve() : reject(new Error('Simulated error'));
             }, 2000);
         });
@@ -627,7 +536,6 @@ class ContactForm {
     }
     
     showAlert(message, type) {
-        // Crear y mostrar alerta
         const alert = document.createElement('div');
         alert.className = `alert alert-${type}`;
         alert.innerHTML = `
@@ -639,23 +547,17 @@ class ContactForm {
             </div>
         `;
         
-        // Insertar antes del formulario
         this.form.parentNode.insertBefore(alert, this.form);
         
-        // Remover después de 5 segundos
         setTimeout(() => {
             alert.remove();
         }, 5000);
         
-        // Scroll a la alerta
         smoothScrollTo(alert, 500);
     }
 }
 
-/* ==========================================================================
-   LAZY LOADING DE IMÁGENES
-   ========================================================================== */
-
+// CARGA DIFERIDA DE IMÁGENES
 class LazyImages {
     constructor() {
         this.images = $$('img[data-src]');
@@ -699,10 +601,7 @@ class LazyImages {
     }
 }
 
-/* ==========================================================================
-   INICIALIZACIÓN
-   ========================================================================== */
-
+// APLICACIÓN PRINCIPAL
 class App {
     constructor() {
         this.modules = [];
@@ -710,20 +609,17 @@ class App {
     }
     
     init() {
-        // Inicializar módulos cuando DOM esté listo
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.initModules());
         } else {
             this.initModules();
         }
         
-        // Configurar event listeners globales
         this.setupGlobalEvents();
     }
     
     initModules() {
         try {
-            // Inicializar todos los módulos
             this.modules.push(new LoadingScreen());
             this.modules.push(new Navigation());
             this.modules.push(new ScrollAnimations());
@@ -739,21 +635,17 @@ class App {
     }
     
     setupGlobalEvents() {
-        // Manejar errores globales
         window.addEventListener('error', (e) => {
             console.error('Global error:', e.error);
         });
         
-        // Prevenir comportamiento por defecto en links vacíos
         document.addEventListener('click', (e) => {
             if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
                 e.preventDefault();
             }
         });
         
-        // Manejar teclas de acceso rápido
         document.addEventListener('keydown', (e) => {
-            // ESC para cerrar menú móvil
             if (e.key === 'Escape' && APP_STATE.navOpen) {
                 const nav = this.modules.find(module => module instanceof Navigation);
                 if (nav) nav.closeMobileMenu();
@@ -762,9 +654,8 @@ class App {
     }
 }
 
-// Inicializar aplicación
+// INICIALIZACIÓN DEL SITIO WEB
 document.addEventListener('DOMContentLoaded', function() {
-    // Forzar ocultar la pantalla de carga después de un tiempo corto
     setTimeout(() => {
         const loadingScreen = document.getElementById('loading-screen');
         if (loadingScreen) {
@@ -777,12 +668,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 500);
     
-    // Inicializar la aplicación principal
     try {
         new App();
     } catch (error) {
         console.log('App inicializada con modo simple');
-        // Si hay un error, asegurar que la pantalla de carga se oculte
         const loadingScreen = document.getElementById('loading-screen');
         if (loadingScreen) {
             loadingScreen.style.display = 'none';
@@ -790,7 +679,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // FORZAR CONTADORES DESPUÉS DE 3 SEGUNDOS SI NO SE HAN ANIMADO
     setTimeout(() => {
         const counters = document.querySelectorAll('[data-count]');
         counters.forEach(counter => {
@@ -820,7 +708,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 3000);
 });
 
-// Fallback adicional - ocultar pantalla de carga independientemente
 setTimeout(() => {
     const loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen && window.getComputedStyle(loadingScreen).display !== 'none') {

@@ -1,7 +1,4 @@
-/* ==========================================================================
-   CHATBOT FUNCTIONALITY
-   ========================================================================== */
-
+// SISTEMA DE CHATBOT INTERACTIVO
 class ArcoBot {
     constructor() {
         this.isOpen = false;
@@ -22,11 +19,9 @@ class ArcoBot {
         const chatbotSend = document.getElementById('chatbot-send');
         const messageInput = document.getElementById('chatbot-message-input');
         
-        // Abrir/cerrar chatbot
         chatbotButton?.addEventListener('click', () => this.toggleChat());
         chatbotClose?.addEventListener('click', () => this.closeChat());
         
-        // Enviar mensaje
         chatbotSend?.addEventListener('click', () => this.sendMessage());
         messageInput?.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
@@ -35,14 +30,12 @@ class ArcoBot {
             }
         });
         
-        // Cerrar con ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isOpen) {
                 this.closeChat();
             }
         });
         
-        // Cerrar al hacer click fuera
         document.addEventListener('click', (e) => {
             const chatWindow = document.getElementById('chatbot-window');
             const chatButton = document.getElementById('chatbot-button');
@@ -81,13 +74,11 @@ class ArcoBot {
             chatWindow.classList.add('active');
             chatButton.style.transform = 'scale(0.9)';
             
-            // Focus en el input
             setTimeout(() => {
                 const messageInput = document.getElementById('chatbot-message-input');
                 messageInput?.focus();
             }, 300);
             
-            // Vibración en móviles
             if (navigator.vibrate) {
                 navigator.vibrate(50);
             }
@@ -285,10 +276,9 @@ class ArcoBot {
     }
 }
 
-// Inicializar el chatbot cuando el DOM esté listo
+// INICIALIZACIÓN DEL CHATBOT
 document.addEventListener('DOMContentLoaded', () => {
     window.arcoBot = new ArcoBot();
     
-    // Log para debugging
     console.log('ArcoBot inicializado correctamente');
 });

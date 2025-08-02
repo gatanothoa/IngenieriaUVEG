@@ -1,11 +1,4 @@
-/* ==========================================================================
-   FORMULARIOS AVANZADOS
-   ========================================================================== */
-
-/* ==========================================================================
-   VALIDADOR DE FORMULARIOS
-   ========================================================================== */
-
+// VALIDADOR AVANZADO DE FORMULARIOS
 class FormValidator {
     constructor(form, options = {}) {
         this.form = form;
@@ -30,43 +23,35 @@ class FormValidator {
     }
     
     setupDefaultRules() {
-        // Reglas por defecto basadas en atributos HTML5
         const inputs = this.form.querySelectorAll('input, select, textarea');
         
         inputs.forEach(input => {
             const fieldRules = [];
             
-            // Campo requerido
             if (input.hasAttribute('required')) {
                 fieldRules.push('required');
             }
             
-            // Email
             if (input.type === 'email') {
                 fieldRules.push('email');
             }
             
-            // Teléfono
             if (input.type === 'tel') {
                 fieldRules.push('phone');
             }
             
-            // URL
             if (input.type === 'url') {
                 fieldRules.push('url');
             }
             
-            // Longitud mínima
             if (input.hasAttribute('minlength')) {
                 fieldRules.push(`minLength:${input.getAttribute('minlength')}`);
             }
             
-            // Longitud máxima
             if (input.hasAttribute('maxlength')) {
                 fieldRules.push(`maxLength:${input.getAttribute('maxlength')}`);
             }
             
-            // Patrón
             if (input.hasAttribute('pattern')) {
                 fieldRules.push(`pattern:${input.getAttribute('pattern')}`);
             }
@@ -370,10 +355,7 @@ class FormValidator {
     }
 }
 
-/* ==========================================================================
-   AUTOCOMPLETADO Y SUGERENCIAS
-   ========================================================================== */
-
+// AUTOCOMPLETADO Y SUGERENCIAS
 class AutoComplete {
     constructor(input, options = {}) {
         this.input = input;
@@ -574,10 +556,7 @@ class AutoComplete {
     }
 }
 
-/* ==========================================================================
-   MÁSCARAS DE ENTRADA
-   ========================================================================== */
-
+// MÁSCARAS DE ENTRADA PARA CAMPOS
 class InputMask {
     constructor(input, mask, options = {}) {
         this.input = input;
@@ -641,10 +620,7 @@ class InputMask {
     }
 }
 
-/* ==========================================================================
-   INICIALIZACIÓN DE FORMULARIOS
-   ========================================================================== */
-
+// ADMINISTRADOR PRINCIPAL DE FORMULARIOS
 class FormManager {
     constructor() {
         this.validators = new Map();
@@ -831,6 +807,7 @@ class FormManager {
 }
 
 // Inicializar cuando el DOM esté listo
+// INICIALIZACIÓN DEL SISTEMA DE FORMULARIOS
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         window.formManager = new FormManager();

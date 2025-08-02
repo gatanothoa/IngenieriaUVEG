@@ -1,15 +1,8 @@
-/* ==========================================================================
-   ANIMACIONES JAVASCRIPT AVANZADAS
-   ========================================================================== */
-
-/* ==========================================================================
-   PARALLAX SCROLLING
-   ========================================================================== */
-
+// CONTROLADOR DE EFECTOS PARALLAX
 class ParallaxController {
     constructor() {
         this.elements = $$('[data-parallax]');
-        this.isActive = window.innerWidth > 768; // Solo en desktop
+        this.isActive = window.innerWidth > 768;
         this.init();
     }
     
@@ -43,21 +36,16 @@ class ParallaxController {
         this.isActive = window.innerWidth > 768;
         
         if (wasActive && !this.isActive) {
-            // Limpiar transformaciones si cambiamos a móvil
             this.elements.forEach(element => {
                 element.style.transform = '';
             });
         } else if (!wasActive && this.isActive) {
-            // Reactivar si cambiamos a desktop
             this.update();
         }
     }
 }
 
-/* ==========================================================================
-   ANIMACIONES DE ENTRADA MEJORADAS
-   ========================================================================== */
-
+// ANIMACIONES DE ENTRADA AL HACER SCROLL
 class EnhancedScrollAnimations {
     constructor() {
         this.observer = null;
@@ -83,12 +71,10 @@ class EnhancedScrollAnimations {
     }
     
     findElements() {
-        // Elementos con animaciones data-aos
         $$('[data-aos]').forEach(element => {
             this.observeElement(element);
         });
         
-        // Elementos con clases de animación
         $$('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale').forEach(element => {
             this.observeElement(element);
         });
@@ -174,10 +160,7 @@ class EnhancedScrollAnimations {
     }
 }
 
-/* ==========================================================================
-   EFECTOS DE HOVER AVANZADOS
-   ========================================================================== */
-
+// EFECTOS DE HOVER INTERACTIVOS
 class HoverEffects {
     constructor() {
         this.init();
@@ -276,10 +259,7 @@ class HoverEffects {
     }
 }
 
-/* ==========================================================================
-   ANIMACIONES DE TEXTO
-   ========================================================================== */
-
+// ANIMACIONES DE TEXTO INTERACTIVAS
 class TextAnimations {
     constructor() {
         this.init();
@@ -401,10 +381,7 @@ class TextAnimations {
     }
 }
 
-/* ==========================================================================
-   ANIMACIONES DE SCROLL SUAVE
-   ========================================================================== */
-
+// EFECTOS DE SCROLL SUAVE Y PROGRESO
 class SmoothScrollEffects {
     constructor() {
         this.init();
@@ -459,10 +436,7 @@ class SmoothScrollEffects {
     }
 }
 
-/* ==========================================================================
-   GESTOS TÁCTILES
-   ========================================================================== */
-
+// GESTOS TÁCTILES PARA MÓVIL
 class TouchGestures {
     constructor() {
         this.startX = 0;
@@ -498,7 +472,6 @@ class TouchGestures {
         const deltaX = this.endX - this.startX;
         const deltaY = this.endY - this.startY;
         
-        // Swipe horizontal
         if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > this.minSwipeDistance) {
             if (deltaX > 0) {
                 this.onSwipeRight();
@@ -507,7 +480,6 @@ class TouchGestures {
             }
         }
         
-        // Swipe vertical
         if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > this.minSwipeDistance) {
             if (deltaY > 0) {
                 this.onSwipeDown();
@@ -518,7 +490,6 @@ class TouchGestures {
     }
     
     onSwipeLeft() {
-        // Cerrar menú móvil si está abierto
         if (APP_STATE.navOpen) {
             const navModule = window.app?.modules?.find(m => m instanceof Navigation);
             if (navModule) navModule.closeMobileMenu();
@@ -526,7 +497,6 @@ class TouchGestures {
     }
     
     onSwipeRight() {
-        // Abrir menú móvil si está cerrado y estamos en móvil
         if (!APP_STATE.navOpen && APP_STATE.isMobile) {
             const navModule = window.app?.modules?.find(m => m instanceof Navigation);
             if (navModule) navModule.toggleMobileMenu();
@@ -534,17 +504,14 @@ class TouchGestures {
     }
     
     onSwipeUp() {
-        // Scroll hacia arriba suave
         window.scrollBy({ top: -100, behavior: 'smooth' });
     }
     
     onSwipeDown() {
-        // Scroll hacia abajo suave
         window.scrollBy({ top: 100, behavior: 'smooth' });
     }
     
     setupPinchZoom() {
-        // Prevenir zoom en elementos específicos
         $$('.no-zoom').forEach(element => {
             element.addEventListener('touchstart', (e) => {
                 if (e.touches.length > 1) {
@@ -555,10 +522,7 @@ class TouchGestures {
     }
 }
 
-/* ==========================================================================
-   INICIALIZACIÓN DE ANIMACIONES
-   ========================================================================== */
-
+// ADMINISTRADOR PRINCIPAL DE ANIMACIONES
 class AnimationsManager {
     constructor() {
         this.modules = [];
@@ -566,25 +530,21 @@ class AnimationsManager {
     }
     
     init() {
-        // Verificar soporte de animaciones
         if (!this.supportsAnimations()) {
             console.warn('Animations not supported, falling back to static experience');
             return;
         }
         
-        // Inicializar módulos de animación
         this.modules.push(new ParallaxController());
         this.modules.push(new EnhancedScrollAnimations());
         this.modules.push(new HoverEffects());
         this.modules.push(new TextAnimations());
         this.modules.push(new SmoothScrollEffects());
         
-        // Solo en dispositivos táctiles
         if ('ontouchstart' in window) {
             this.modules.push(new TouchGestures());
         }
         
-        // Añadir estilos CSS para ripple effect
         this.addRippleStyles();
         
         console.log('Animations initialized successfully');
@@ -652,7 +612,7 @@ class AnimationsManager {
     }
 }
 
-// Inicializar cuando el DOM esté listo
+// INICIALIZACIÓN DE SISTEMA DE ANIMACIONES
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         new AnimationsManager();

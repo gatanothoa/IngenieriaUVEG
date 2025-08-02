@@ -1,18 +1,15 @@
-// Funciones para mejorar las animaciones del hero
+// ANIMACIONES ESPECIALES PARA LA SECCIÓN HERO
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Función para animar el conteo del calendario
     function animateYearCounter() {
         const heroCard = document.querySelector('.hero-card');
         
         if (heroCard) {
-            // Observador de intersección para iniciar animaciones cuando sea visible
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         heroCard.classList.add('animate-in');
                         
-                        // Añadir efecto de pulso periódico
                         setInterval(() => {
                             heroCard.style.transform = 'perspective(1000px) rotateY(-10deg) scale(1.02)';
                             setTimeout(() => {
@@ -29,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Función para añadir efectos de partículas en hover
     function addParticleEffects() {
         const heroCard = document.querySelector('.hero-card');
         
@@ -40,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Crear partículas decorativas
     function createParticles(container) {
         for (let i = 0; i < 6; i++) {
             setTimeout(() => {
@@ -71,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Función para añadir efecto de typewriter al texto
     function typewriterEffect() {
         const title = document.querySelector('.hero-title');
         if (title) {
@@ -94,15 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Inicializar todas las funciones
     animateYearCounter();
     addParticleEffects();
     
-    // Delay para el efecto typewriter
     setTimeout(typewriterEffect, 1000);
 });
 
-// CSS para las animaciones adicionales
+// ESTILOS CSS PARA LAS ANIMACIONES
 const additionalStyles = `
     @keyframes particleFloat {
         0% {
@@ -135,7 +127,6 @@ const additionalStyles = `
     }
 `;
 
-// Insertar estilos adicionales
 const styleSheet = document.createElement('style');
 styleSheet.textContent = additionalStyles;
 document.head.appendChild(styleSheet);
