@@ -2,16 +2,11 @@
   "name": "whatsapp-chatbot",
   "version": "1.0.0",
   "description": "Chatbot inteligente para WhatsApp con múltiples funcionalidades",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node railway-chatbot.js",
-    "start-simple": "node start-simple.js",
-    "start-full": "node src/index.js",
-    "start-local": "node quick-start.js",
-    "dev": "nodemon src/index.js",
-    "test": "jest",
-    "lint": "eslint src/",
-    "format": "prettier --write src/"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "node index.js"
   },
   "keywords": [
     "whatsapp",
