@@ -127,7 +127,7 @@ class WhatsAppBot {
                 this.logger.info('💾 QR guardado como imagen para panel web');
                 
                 // Mostrar URLs de acceso
-                const webPort = process.env.WEB_PORT || 3000;
+                const webPort = process.env.PORT || process.env.WEB_PORT || 3000;
                 console.log('\n🌐 PANEL WEB DISPONIBLE:');
                 console.log(`📱 Local: http://localhost:${webPort}`);
                 console.log(`🌍 Remoto: Usa ngrok o deploy en la nube`);
