@@ -1,12 +1,35 @@
 // COMANDOS PRINCIPALES DEL CHATBOT
 const axios = require('axios');
 const moment = require('moment');
+con                           `🛠️ *HERRAMIENTAS ADICIONALES:*\n` +
+                           `• *4* - Impresoras industriales\n` +
+                           `• */clima* - Consultar el clima\n` +
+                           `• */hora* - Ver fecha y hora\n\n` +
+                           `📊 *INFORMACIÓN:*\n` +
+                           `• *8* - Información de ArcoExpress\n` +
+                           `• *9* - Guía completa de comandos\n\n` +
+                           `🏷️ *ArcoExpress - ${this.companyInfo.experience}*\n` +
+                           `¿En qué puedo ayudarte hoy? Solo escribe el número 🤔`;ressCommands = require('./arcoExpressCommands');
 moment.locale('es');
 
 class Commands {
     constructor() {
         this.version = '1.0.0';
-        this.botName = 'WhatsApp Bot Assistant';
+        this.botName = 'ArcoExpress Virtual Assistant';
+        this.companyName = 'ArcoExpress de México';
+        this.companyInfo = {
+            speciality: 'Especialistas en etiquetas térmicas, ribbons e impresoras',
+            experience: 'Más de 20 años de experiencia',
+            location: 'Puebla, México',
+            website: 'arcoexpress.mx',
+            email: 'ventas@arcoexpress.mx',
+            phone: '+52 222 210 61 44',
+            whatsapp: '+52 222 750 68 55'
+        };
+        
+        // Inicializar comandos específicos de ArcoExpress
+        this.arcoCommands = new ArcoExpressCommands();
+        
         this.jokes = [
             '¿Por qué los pájaros vuelan hacia el sur en invierno? 🐦\n¡Porque caminar sería demasiado lejos! 😂',
             '¿Qué le dice un jardinero a otro? 🌱\n¡Seamos plantas! 😄',
@@ -24,21 +47,23 @@ class Commands {
         ];
     }
 
-    // COMANDO START/INICIO
+    // COMANDO START/INICIO - ArcoExpress
     start(message) {
-        const welcomeMessage = `🤖 *¡Bienvenido al ${this.botName}!*\n\n` +
-                              `👋 Hola! Soy tu asistente virtual automatizado.\n\n` +
-                              `🚀 *¿Qué puedo hacer por ti?*\n` +
-                              `• Responder preguntas\n` +
-                              `• Proporcionar información\n` +
-                              `• Entretenerte con chistes y frases\n` +
-                              `• Ayudarte con cálculos\n` +
-                              `• Consultar el clima\n` +
-                              `• Crear recordatorios\n` +
-                              `• ¡Y mucho más!\n\n` +
-                              `📋 Escribe */menu* para ver todas las opciones\n` +
-                              `❓ Escribe */help* si necesitas ayuda\n\n` +
-                              `¡Estoy aquí para ayudarte! 😊`;
+        const welcomeMessage = `🤖 *¡Bienvenido a ${this.companyName}!*\n\n` +
+                              `👋 Hola! Soy tu asistente virtual de *ArcoExpress*\n\n` +
+                              `🏷️ *${this.companyInfo.speciality}*\n` +
+                              `⚡ *${this.companyInfo.experience}*\n\n` +
+                              `🚀 *¿En qué puedo ayudarte?*\n` +
+                              `• 🏷️ Información sobre etiquetas térmicas\n` +
+                              `• 🎗️ Catálogo de ribbons\n` +
+                              `• 🖨️ Impresoras industriales\n` +
+                              `• 💰 Cotizaciones personalizadas\n` +
+                              `• 🔧 Servicios de maquila\n` +
+                              `• 📞 Información de contacto\n\n` +
+                              `📋 Escribe *00* para ver el menú completo\n` +
+                              `💬 Escribe *1* para ver nuestro catálogo\n` +
+                              `💰 Escribe *5* para solicitar precios\n\n` +
+                              `¡${this.companyInfo.experience} al servicio de México! 🇲🇽`;
         
         return {
             type: 'text',
@@ -46,27 +71,30 @@ class Commands {
         };
     }
 
-    // COMANDO HELP/AYUDA
+    // COMANDO HELP/AYUDA - ArcoExpress
     help(message) {
-        const helpMessage = `📚 *GUÍA DE COMANDOS*\n\n` +
-                           `🔹 *COMANDOS BÁSICOS:*\n` +
-                           `• */start* - Mensaje de bienvenida\n` +
-                           `• */help* - Esta guía de ayuda\n` +
-                           `• */menu* - Menú principal\n` +
-                           `• */info* - Información del bot\n\n` +
-                           `🔹 *UTILIDADES:*\n` +
+        const helpMessage = `📚 *GUÍA DE COMANDOS ARCOEXPRESS*\n\n` +
+                           `🔹 *COMANDOS PRINCIPALES (NÚMEROS):*\n` +
+                           `• *1* - Catálogo completo de productos\n` +
+                           `• *2* - Información de etiquetas térmicas\n` +
+                           `• *3* - Catálogo de ribbons\n` +
+                           `• *4* - Impresoras disponibles\n` +
+                           `• *5* - Solicitar cotización\n` +
+                           `• *6* - Servicios de maquila\n` +
+                           `• *7* - Información de contacto\n\n` +
+                           `🔹 *COMANDOS DE SISTEMA:*\n` +
+                           `• *0* - Mensaje de bienvenida\n` +
+                           `• *00* - Menú principal\n` +
+                           `• *8* - Información de la empresa\n` +
+                           `• *9* - Esta guía de ayuda\n\n` +
+                           `🔹 *COMANDOS ADICIONALES:*\n` +
                            `• */clima [ciudad]* - Consultar clima\n` +
                            `• */hora* - Hora y fecha actual\n` +
-                           `• */calc [operación]* - Calculadora\n` +
-                           `• */recordatorio [mensaje]* - Crear recordatorio\n\n` +
-                           `🔹 *ENTRETENIMIENTO:*\n` +
-                           `• */chiste* - Chiste aleatorio\n` +
-                           `• */frase* - Frase motivacional\n\n` +
-                           `🔹 *INFORMACIÓN:*\n` +
-                           `• */noticias* - Noticias recientes\n` +
                            `• */stats* - Estadísticas del bot\n\n` +
-                           `💡 *Tip:* También puedes escribir mensajes normales y yo responderé de forma inteligente.\n\n` +
-                           `¿Necesitas ayuda con algo específico? ¡Solo pregunta! 😊`;
+                           `🏷️ *${this.companyInfo.speciality}*\n` +
+                           `📞 WhatsApp: ${this.companyInfo.whatsapp}\n\n` +
+                           `💡 *Tip:* También puedes escribir mensajes normales como "necesito etiquetas" y yo te ayudo.\n\n` +
+                           `¿Necesitas información específica? ¡Solo escribe el número! 😊`;
         
         return {
             type: 'text',
@@ -74,27 +102,28 @@ class Commands {
         };
     }
 
-    // COMANDO MENU
+    // COMANDO MENU - ArcoExpress
     menu(message) {
-        const menuMessage = `🎯 *MENÚ PRINCIPAL*\n\n` +
+        const menuMessage = `🎯 *MENÚ PRINCIPAL ARCOEXPRESS*\n\n` +
                            `Selecciona una opción escribiendo el comando:\n\n` +
-                           `🌟 *POPULARES:*\n` +
+                           `�️ *PRODUCTOS MÁS POPULARES:*\n` +
+                           `• */productos* - Catálogo completo\n` +
+                           `• */etiquetas* - Etiquetas térmicas\n` +
+                           `• */ribbons* - Ribbons para impresoras\n\n` +
+                           `� *SERVICIOS COMERCIALES:*\n` +
+                           `• */cotizar* - Solicitar cotización\n` +
+                           `• */maquila* - Servicios de maquila\n` +
+                           `• */contacto* - Información de contacto\n\n` +
+                           `�️ *HERRAMIENTAS ADICIONALES:*\n` +
                            `• */clima* - Consultar el clima\n` +
-                           `• */chiste* - Escuchar un chiste\n` +
-                           `• */hora* - Ver fecha y hora\n\n` +
-                           `🛠️ *HERRAMIENTAS:*\n` +
-                           `• */calc* - Calculadora\n` +
-                           `• */recordatorio* - Crear recordatorio\n` +
-                           `• */traductor* - Traducir texto\n\n` +
-                           `📰 *INFORMACIÓN:*\n` +
-                           `• */noticias* - Últimas noticias\n` +
-                           `• */frase* - Frase inspiradora\n` +
-                           `• */info* - Info del bot\n\n` +
+                           `• */hora* - Ver fecha y hora\n` +
+                           `• */info* - Información de ArcoExpress\n\n` +
                            `📊 *ESTADÍSTICAS:*\n` +
-                           `• */stats* - Ver estadísticas\n\n` +
+                           `• */stats* - Ver estadísticas del bot\n\n` +
                            `❓ *AYUDA:*\n` +
-                           `• */help* - Guía completa\n\n` +
-                           `¿Qué te gustaría hacer? 🤔`;
+                           `• */help* - Guía completa de comandos\n\n` +
+                           `🏷️ *ArcoExpress - ${this.companyInfo.experience}*\n` +
+                           `¿En qué puedo ayudarte hoy? 🤔`;
         
         return {
             type: 'text',
@@ -102,24 +131,29 @@ class Commands {
         };
     }
 
-    // COMANDO INFO
+    // COMANDO INFO - ArcoExpress
     info(message) {
-        const infoMessage = `ℹ️ *INFORMACIÓN DEL BOT*\n\n` +
-                           `🤖 *Nombre:* ${this.botName}\n` +
+        const infoMessage = `ℹ️ *INFORMACIÓN DE ARCOEXPRESS*\n\n` +
+                           `🏢 *Empresa:* ${this.companyName}\n` +
+                           `🤖 *Bot:* ${this.botName}\n` +
                            `📱 *Versión:* ${this.version}\n` +
-                           `🚀 *Estado:* Activo y funcionando\n` +
-                           `⚡ *Plataforma:* WhatsApp Web\n` +
-                           `🔧 *Tecnología:* Node.js + whatsapp-web.js\n\n` +
-                           `🎯 *Propósito:*\n` +
-                           `Soy un asistente virtual diseñado para hacer tu vida más fácil. Puedo ayudarte con información, entretenimiento, cálculos y mucho más.\n\n` +
-                           `✨ *Características:*\n` +
-                           `• Respuestas automáticas 24/7\n` +
-                           `• Comandos inteligentes\n` +
-                           `• Entretenimiento personalizado\n` +
-                           `• Herramientas útiles\n` +
-                           `• Siempre aprendiendo\n\n` +
-                           `👨‍💻 *Desarrollado con ❤️ para mejorar tu experiencia*\n\n` +
-                           `¿Hay algo específico que te gustaría saber? 🤗`;
+                           `🚀 *Estado:* Activo 24/7\n` +
+                           `⚡ *Plataforma:* WhatsApp Business\n\n` +
+                           `🎯 *Especialidad:*\n` +
+                           `${this.companyInfo.speciality}\n\n` +
+                           `✨ *Nuestros Servicios:*\n` +
+                           `• 🏷️ Etiquetas térmicas de alta calidad\n` +
+                           `• 🎗️ Ribbons para todas las marcas\n` +
+                           `• 🖨️ Impresoras industriales\n` +
+                           `• 🔧 Servicios de maquila\n` +
+                           `• 🚚 Envíos a todo México\n\n` +
+                           `📍 *Ubicación:* ${this.companyInfo.location}\n` +
+                           `📞 *Teléfono:* ${this.companyInfo.phone}\n` +
+                           `💬 *WhatsApp:* ${this.companyInfo.whatsapp}\n` +
+                           `📧 *Email:* ${this.companyInfo.email}\n` +
+                           `🌐 *Web:* ${this.companyInfo.website}\n\n` +
+                           `⚡ *${this.companyInfo.experience} al servicio de México* 🇲🇽\n\n` +
+                           `¿Necesitas información específica sobre nuestros productos? 🤗`;
         
         return {
             type: 'text',
@@ -351,6 +385,35 @@ class Commands {
         if (days > 0) return `${days}d ${hours}h ${minutes}m`;
         if (hours > 0) return `${hours}h ${minutes}m`;
         return `${minutes}m`;
+    }
+
+    // COMANDOS ESPECÍFICOS DE ARCOEXPRESS
+    productos(message) {
+        return this.arcoCommands.productos(message);
+    }
+
+    etiquetas(message) {
+        return this.arcoCommands.etiquetas(message);
+    }
+
+    ribbons(message) {
+        return this.arcoCommands.ribbons(message);
+    }
+
+    impresoras(message) {
+        return this.arcoCommands.impresoras(message);
+    }
+
+    cotizar(message) {
+        return this.arcoCommands.cotizar(message);
+    }
+
+    maquila(message) {
+        return this.arcoCommands.maquila(message);
+    }
+
+    contacto(message) {
+        return this.arcoCommands.contacto(message);
     }
 }
 
