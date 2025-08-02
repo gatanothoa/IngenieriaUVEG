@@ -4,7 +4,8 @@
   "description": "Chatbot inteligente para WhatsApp con múltiples funcionalidades",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node start-simple.js",
+    "start-full": "node src/index.js",
     "dev": "nodemon src/index.js",
     "quick-start": "node start.js",
     "test": "jest",
