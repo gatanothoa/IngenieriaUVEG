@@ -14,6 +14,9 @@
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>ArcoExpress de México - Especialistas en Etiquetas y Etiquetado</title>
     <meta name="description" content="Especialistas en etiquetas térmicas, ribbons e impresoras. Más de 20 años de experiencia en identificación de producto terminado.">
     <meta name="keywords" content="etiquetas térmicas, ribbons, impresoras, identificación industrial, señalización">
@@ -31,13 +34,32 @@
     <link rel="stylesheet" href="assets/css/mobile-ultra.css">
     <link rel="stylesheet" href="assets/css/glassmorphism.css">
     <link rel="stylesheet" href="assets/css/mobile-fix.css">
-    <link rel="stylesheet" href="assets/css/chatbot.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css?v=2025080201">
     
     <!-- Google Fonts optimized for mobile -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome optimized -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="all">
+    
+    <!-- Estilos críticos del chatbot para evitar caché -->
+    <style>
+        .chatbot-float, #chatbot-button, button.chatbot-float {
+            background: linear-gradient(135deg, #1976D2 0%, #0D47A1 100%) !important;
+        }
+        .chatbot-header, .chatbot-window .chatbot-header, #chatbot-window .chatbot-header {
+            background: linear-gradient(135deg, #212121 0%, #1976D2 50%, #0D47A1 100%) !important;
+            color: white !important;
+        }
+        .bot-message .message-content p, .chatbot-window .bot-message .message-content p {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%) !important;
+            color: #0D47A1 !important;
+        }
+        .user-message .message-content p, .chatbot-window .user-message .message-content p {
+            background: linear-gradient(135deg, #212121 0%, #424242 100%) !important;
+            color: white !important;
+        }
+    </style>
     
     <!-- PWA Icons for mobile -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo-arcoexpress.svg">

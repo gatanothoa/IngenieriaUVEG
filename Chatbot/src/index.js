@@ -1,6 +1,7 @@
 // CHATBOT WHATSAPP - ARCHIVO PRINCIPAL
 const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
+const QRCode = require('qrcode');
 const fs = require('fs-extra');
 const path = require('path');
 require('dotenv').config();
@@ -10,6 +11,14 @@ const MessageHandler = require('./handlers/messageHandler');
 const CommandProcessor = require('./handlers/commandProcessor');
 const DatabaseManager = require('./database/databaseManager');
 const Logger = require('./utils/logger');
+
+// Importar servidor web para panel remoto
+let webServer = null;
+try {
+    webServer = require('./web/server');
+} catch (error) {
+    console.log('📝 Servidor web no disponible - funcionando en modo local');
+}
 
 class WhatsAppBot {
     constructor() {
@@ -30,8 +39,13 @@ class WhatsAppBot {
                     '--no-zygote',
                     '--single-process',
                     '--disable-gpu'
-                ]
-            }
+                ],
+                timeout: 60000 // Timeout más largo para estabilidad
+            },
+            // Configuración para QR más duradero
+            qrMaxRetries: 10,
+            restartOnAuthFail: true,
+            qrTimeout: 300000 // 5 minutos de duración del QR
         });
 
         // Inicializar módulos
@@ -93,9 +107,39 @@ class WhatsAppBot {
     // CONFIGURAR EVENTOS DEL CLIENTE WHATSAPP
     setupClientEvents() {
         // Evento: Generar código QR
-        this.client.on('qr', (qr) => {
-            this.logger.info('📱 Escanea el código QR con WhatsApp:');
+        this.client.on('qr', async (qr) => {
+            this.logger.info('📱 Generando código QR para conexión...');
+            
+            // Mostrar QR en terminal
             qrcode.generate(qr, { small: true });
+            
+            // Guardar QR como imagen para panel web
+            try {
+                await fs.ensureDir('./data');
+                await QRCode.toFile('./data/qr.png', qr, {
+                    width: 400,
+                    margin: 2,
+                    color: {
+                        dark: '#000000',
+                        light: '#FFFFFF'
+                    }
+                });
+                this.logger.info('💾 QR guardado como imagen para panel web');
+                
+                // Mostrar URLs de acceso
+                const webPort = process.env.WEB_PORT || 3000;
+                console.log('\n🌐 PANEL WEB DISPONIBLE:');
+                console.log(`📱 Local: http://localhost:${webPort}`);
+                console.log(`🌍 Remoto: Usa ngrok o deploy en la nube`);
+                console.log('\n📋 INSTRUCCIONES PARA CONEXIÓN REMOTA:');
+                console.log('1. Abre el panel web en cualquier navegador');
+                console.log('2. Comparte la URL con la persona remota');
+                console.log('3. Escanea el QR desde WhatsApp');
+                console.log('4. ¡El bot funcionará 24/7!\n');
+                
+            } catch (error) {
+                this.logger.error('❌ Error guardando QR como imagen:', error.message);
+            }
         });
 
         // Evento: Cliente listo

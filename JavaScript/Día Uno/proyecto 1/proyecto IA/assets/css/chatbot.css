@@ -9,7 +9,7 @@
     right: 20px;
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, #1976D2 0%, #0D47A1 100%);
+    background: linear-gradient(135deg, #1976D2 0%, #0D47A1 100%) !important;
     border: none;
     border-radius: 50%;
     box-shadow: 
@@ -23,6 +23,14 @@
     justify-content: center;
     overflow: hidden;
     animation: chatbotBounce 2s ease-in-out infinite;
+}
+
+#chatbot-button {
+    background: linear-gradient(135deg, #1976D2 0%, #0D47A1 100%) !important;
+}
+
+button.chatbot-float {
+    background: linear-gradient(135deg, #1976D2 0%, #0D47A1 100%) !important;
 }
 
 .chatbot-float:hover {
@@ -130,13 +138,21 @@
 
 /* Chatbot Header */
 .chatbot-header {
-    background: linear-gradient(135deg, #212121 0%, #0D47A1 100%);
+    background: linear-gradient(135deg, #212121 0%, #1976D2 50%, #0D47A1 100%) !important;
     padding: 20px;
-    color: white;
+    color: white !important;
     display: flex;
     align-items: center;
     gap: 15px;
     position: relative;
+}
+
+.chatbot-window .chatbot-header {
+    background: linear-gradient(135deg, #212121 0%, #1976D2 50%, #0D47A1 100%) !important;
+}
+
+#chatbot-window .chatbot-header {
+    background: linear-gradient(135deg, #212121 0%, #1976D2 50%, #0D47A1 100%) !important;
 }
 
 .chatbot-avatar {
@@ -281,8 +297,8 @@
 }
 
 .bot-message .message-content p {
-    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
-    color: #0D47A1;
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%) !important;
+    color: #0D47A1 !important;
 }
 
 .user-message {
@@ -290,9 +306,20 @@
 }
 
 .user-message .message-content p {
-    background: linear-gradient(135deg, #212121 0%, #424242 100%);
-    color: white;
+    background: linear-gradient(135deg, #212121 0%, #424242 100%) !important;
+    color: white !important;
     margin-left: auto;
+}
+
+/* Forzar estilos específicos */
+.chatbot-window .bot-message .message-content p {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%) !important;
+    color: #0D47A1 !important;
+}
+
+.chatbot-window .user-message .message-content p {
+    background: linear-gradient(135deg, #212121 0%, #424242 100%) !important;
+    color: white !important;
 }
 
 /* Quick Actions */
