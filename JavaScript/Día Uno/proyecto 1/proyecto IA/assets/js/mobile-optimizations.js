@@ -106,7 +106,7 @@ const optimizeMobileScroll = () => {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                const offsetTop = target.offsetTop - 70; // Navbar height
+                const offsetTop = target.offsetTop - 70; // Altura del navbar
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'

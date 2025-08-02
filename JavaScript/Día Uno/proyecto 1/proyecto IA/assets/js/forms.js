@@ -501,7 +501,7 @@ class AutoComplete {
             </div>
         `).join('');
         
-        // Bind click events
+        // Vincular eventos de clic
         this.dropdown.querySelectorAll('.autocomplete-item').forEach(item => {
             item.addEventListener('click', () => this.selectItem(item));
         });
@@ -520,7 +520,7 @@ class AutoComplete {
         this.hideDropdown();
         this.input.focus();
         
-        // Trigger change event
+        // Activar evento de cambio
         this.input.dispatchEvent(new Event('change', { bubbles: true }));
         
         if (this.options.onSelect) {
