@@ -68,66 +68,81 @@ class MessageHandler {
 
         // Saludos
         if (this.containsWords(message, ['hola', 'hi', 'hello', 'buenos', 'buenas', 'saludos'])) {
-            return `¡Hola! 👋 Bienvenido a *${companyConfig.name}*\\n\\nSoy tu asistente virtual. ¿En qué puedo ayudarte hoy?\\n\\nEscribe */menu* para ver todas las opciones disponibles. 😊`;
+            return `¡Hola! 👋 Bienvenido a *ArcoExpress de México*\\n\\n🏷️ *Especialistas en etiquetas térmicas con más de 20 años de experiencia*\\n\\nSoy tu asistente virtual. ¿En qué puedo ayudarte hoy?\\n\\nEscribe */menu* para ver todas las opciones disponibles. 😊`;
         }
 
         // Despedidas
         if (this.containsWords(message, ['adiós', 'bye', 'chao', 'hasta luego', 'nos vemos'])) {
-            return `¡Hasta luego! 👋 Gracias por contactar a *${companyConfig.name}*\\n\\nSi necesitas algo más, estaré aquí para ayudarte. ¡Que tengas un excelente día! 😊`;
+            return `¡Hasta luego! 👋 Gracias por contactar a *ArcoExpress de México*\\n\\n🏷️ Recuerda que somos tu mejor opción en etiquetas térmicas y ribbons.\\n\\nSi necesitas algo más, estaré aquí para ayudarte. ¡Que tengas un excelente día! 😊`;
         }
 
-        // Preguntas sobre productos
-        if (this.containsWords(message, ['producto', 'venden', 'ofrecen', 'catálogo', 'qué tienen'])) {
-            return `📦 Te interesas por nuestros productos. ¡Excelente!\\n\\nEscribe */productos* para ver nuestro catálogo completo, o */cotizar* si ya sabes lo que necesitas.\\n\\n¿Te puedo ayudar con algo específico? 😊`;
+        // Preguntas específicas sobre etiquetas térmicas
+        if (this.containsWords(message, ['etiqueta', 'etiquetas', 'termica', 'térmicas', 'térmica', 'label', 'labels'])) {
+            return `🏷️ ¡Excelente! Las etiquetas térmicas son nuestra especialidad.\\n\\n*Tipos disponibles:*\\n• Etiquetas térmicas directas\\n• Etiquetas de transferencia térmica\\n• Adhesivos permanentes\\n• Para códigos de barras\\n• Industriales especiales\\n\\nEscribe */productos* para ver todo el catálogo o */cotizar* para precio personalizado. 😊`;
         }
 
-        // Preguntas sobre servicios
-        if (this.containsWords(message, ['servicio', 'servicios', 'hacen', 'ayudan'])) {
-            return `🔧 ¡Perfecto! Tenemos varios servicios disponibles.\\n\\nEscribe */servicios* para ver la lista completa, o */contacto* para hablar directamente con un especialista.\\n\\n¿Hay algún servicio específico que te interese? 😊`;
+        // Preguntas sobre ribbons
+        if (this.containsWords(message, ['ribbon', 'ribbons', 'cinta', 'cintas', 'transferencia'])) {
+            return `🎗️ ¡Perfecto! Manejamos todos los tipos de ribbons:\\n\\n*Tipos disponibles:*\\n• Ribbons de cera\\n• Ribbons de resina\\n• Ribbons mixtos\\n• Compatible con todas las marcas\\n\\n*Marcas que soportamos:* Zebra, Honeywell, TSC\\n\\nEscribe */productos* para detalles completos. 😊`;
+        }
+
+        // Preguntas sobre impresoras
+        if (this.containsWords(message, ['impresora', 'impresoras', 'zebra', 'honeywell', 'tsc', 'printer'])) {
+            return `�️ ¡Excelente! Trabajamos con las mejores marcas:\\n\\n*Marcas disponibles:*\\n• 🦓 *Zebra* - Industriales y escritorio\\n• 🏭 *Honeywell* - Alta resistencia\\n• 🔧 *TSC* - Económicas y eficientes\\n\\n*Servicios incluidos:*\\n• Venta de equipos\\n• Soporte técnico especializado\\n• Garantía extendida\\n\\nEscribe */servicios* para más información. 😊`;
+        }
+
+        // Preguntas sobre códigos de barras
+        if (this.containsWords(message, ['codigo', 'códigos', 'barras', 'qr', 'scanner', 'escaner'])) {
+            return `📊 ¡Especialistas en códigos de barras!\\n\\n*Soluciones completas:*\\n• Etiquetas para códigos de barras\\n• Impresoras especializadas\\n• Software de diseño\\n• Consultoría en implementación\\n\\n*Tipos soportados:* Code 128, EAN, UPC, QR, DataMatrix y más.\\n\\nEscribe */contacto* para asesoría personalizada. 😊`;
+        }
+
+        // Preguntas sobre maquila e impresión
+        if (this.containsWords(message, ['maquila', 'impresion', 'impresión', 'servicio', 'servicios'])) {
+            return `🔧 ¡Servicios profesionales ArcoExpress!\\n\\n*Servicios especializados:*\\n• 🏷️ Maquila e impresión de etiquetas\\n• 🏭 Señalización industrial\\n• 🔍 Identificación de productos\\n• 🛠️ Soporte técnico especializado\\n• 📋 Consultoría en etiquetado\\n\\nEscribe */servicios* para detalles completos. 😊`;
         }
 
         // Preguntas sobre precios/cotizaciones
         if (this.containsWords(message, ['precio', 'costo', 'cuánto', 'cotización', 'presupuesto'])) {
-            return `💰 Te ayudo con información de precios.\\n\\nEscribe */cotizar* para solicitar una cotización personalizada, o */contacto* para hablar directamente con nuestro equipo comercial.\\n\\n¿Qué producto o servicio te interesa cotizar? 😊`;
+            return `💰 *Cotizaciones personalizadas ArcoExpress*\\n\\nPara darte el mejor precio necesito saber:\\n• Tipo de etiqueta o ribbon\\n• Cantidad requerida\\n• Medidas específicas\\n• Uso o aplicación\\n\\nEscribe */cotizar* para iniciar cotización formal\\nO */contacto* para hablar con ventas directamente. 😊`;
         }
 
-        // Preguntas sobre contacto
-        if (this.containsWords(message, ['contacto', 'teléfono', 'dirección', 'ubicación', 'dónde'])) {
-            return `📞 ¡Por supuesto! Te comparto nuestros datos de contacto.\\n\\nEscribe */contacto* para ver toda la información completa, o */horarios* para conocer nuestros horarios de atención.\\n\\n¿Prefieres que te contactemos nosotros? 😊`;
+        // Preguntas sobre ubicación y contacto
+        if (this.containsWords(message, ['contacto', 'teléfono', 'dirección', 'ubicación', 'dónde', 'puebla'])) {
+            return `📞 *Datos de contacto ArcoExpress*\\n\\n*Oficinas principales:*\\n📍 Puebla, México\\n☎️ Tel: +52 222 210 61 44\\n☎️ Tel: +52 222 210 61 40\\n📧 Email: ventas@arcoexpress.mx\\n💬 WhatsApp: +52 222 750 68 55\\n🌐 Web: arcoexpress.mx\\n\\nEscribe */horarios* para horarios de atención. 😊`;
         }
 
         // Preguntas sobre horarios
         if (this.containsWords(message, ['horario', 'hora', 'abierto', 'cerrado', 'cuándo', 'atienden'])) {
-            return `⏰ Te informo sobre nuestros horarios.\\n\\nEscribe */horarios* para ver nuestros horarios completos de atención.\\n\\nActualmente atendemos: ${companyConfig.businessHours.days} de ${companyConfig.businessHours.start} a ${companyConfig.businessHours.end} 😊`;
+            return `⏰ *Horarios de atención ArcoExpress*\\n\\n🕘 *Lunes a Viernes*\\n⏰ 9:00 AM - 6:00 PM\\n\\n📞 *Contacto inmediato:*\\n• WhatsApp: +52 222 750 68 55\\n• Email: ventas@arcoexpress.mx\\n\\n*¡Respuesta rápida garantizada!* 😊`;
         }
 
         // Consultas sobre la empresa
-        if (this.containsWords(message, ['empresa', 'compañía', 'negocio', 'sobre', 'quiénes son'])) {
-            return `🏢 Te cuento sobre *${companyConfig.name}*\\n\\nEscribe */info* para conocer más sobre nosotros, o */menu* para ver todas nuestras opciones.\\n\\n¿Te gustaría saber algo específico de nuestra empresa? 😊`;
+        if (this.containsWords(message, ['empresa', 'compañía', 'negocio', 'sobre', 'quiénes son', 'experiencia'])) {
+            return `🏢 *ArcoExpress de México*\\n\\n✅ Más de 20 años de experiencia\\n🏷️ Especialistas en etiquetas térmicas\\n🎗️ Líderes en ribbons y transferencia térmica\\n🖨️ Distribuidores autorizados Zebra, Honeywell, TSC\\n🇲🇽 Cobertura en todo México\\n\\nEscribe */info* para conocer más detalles\\nO */contacto* para hablar con un especialista. 😊`;
+        }
+
+        // Preguntas sobre materiales y especificaciones
+        if (this.containsWords(message, ['material', 'materiales', 'adhesivo', 'papel', 'sintético', 'poliéster'])) {
+            return `📝 *Materiales especializados ArcoExpress*\\n\\n*Materiales disponibles:*\\n• 📄 Papel térmico directo\\n• 🔧 Sintético resistente\\n• 💎 Poliéster premium\\n• 🏭 Polipropileno industrial\\n• 🔒 Adhesivos permanentes\\n• ❄️ Resistentes a temperatura\\n\\nEscribe */productos* para especificaciones técnicas. �`;
         }
 
         // Agradecimientos
-        if (this.containsWords(message, ['gracias', 'thanks', 'agradezco', 'excelente'])) {
-            return `¡De nada! 😊 Es un placer ayudarte.\\n\\nSi necesitas algo más, no dudes en escribirme. Estoy aquí para lo que necesites.\\n\\nEscribe */menu* si quieres ver otras opciones disponibles. 👍`;
+        if (this.containsWords(message, ['gracias', 'thanks', 'agradezco', 'excelente', 'perfecto'])) {
+            return `¡De nada! 😊 *ArcoExpress* siempre a tu servicio.\\n\\n🏷️ Somos expertos en etiquetas térmicas y ribbons\\n⚡ Respuesta rápida garantizada\\n🚚 Envíos a todo México\\n\\nSi necesitas algo más, estoy aquí para ayudarte.\\n\\nEscribe */menu* para ver todas las opciones. �`;
         }
 
-        // Problemas o quejas
-        if (this.containsWords(message, ['problema', 'error', 'queja', 'malo', 'defecto'])) {
-            return `😔 Lamento que tengas un inconveniente.\\n\\nEscribe */soporte* para contactar a nuestro equipo de soporte técnico, o */contacto* para hablar directamente con un representante.\\n\\n¿Puedes contarme más detalles del problema? Así te ayudo mejor. 🛠️`;
-        }
-
-        // Preguntas generales sobre ayuda
-        if (this.containsWords(message, ['ayuda', 'help', 'no sé', 'cómo', 'qué puedo'])) {
-            return `🤗 ¡Claro que te ayudo!\\n\\nEscribe */help* para ver todos los comandos disponibles, o */menu* para las opciones principales.\\n\\nTambién puedes preguntarme directamente lo que necesites. ¿En qué específicamente te puedo ayudar? 😊`;
+        // Problemas técnicos o soporte
+        if (this.containsWords(message, ['problema', 'error', 'falla', 'soporte', 'técnico', 'ayuda técnica'])) {
+            return `🛠️ *Soporte técnico ArcoExpress*\\n\\n😔 Lamento el inconveniente. Nuestro equipo técnico especializado está aquí para ayudarte.\\n\\n*Soporte inmediato:*\\n• 📞 Tel: +52 222 210 61 44\\n• 💬 WhatsApp: +52 222 750 68 55\\n• 📧 Email: ventas@arcoexpress.mx\\n\\nEscribe */soporte* para detalles del problema. ¡Lo solucionamos! �`;
         }
 
         // Preguntas sobre el bot
         if (this.containsWords(message, ['bot', 'robot', 'eres real', 'humano', 'artificial'])) {
-            return `🤖 ¡Soy el asistente virtual de *${companyConfig.name}*!\\n\\nEstoy aquí para ayudarte con información sobre productos, servicios, contacto y mucho más.\\n\\nAunque soy un bot, detrás de mí hay un equipo humano real listo para atenderte. ¿En qué te puedo ayudar? 😊`;
+            return `🤖 ¡Soy el asistente virtual de *ArcoExpress de México*!\\n\\n🏷️ Especializado en etiquetas térmicas y ribbons\\n⚡ Disponible 24/7 para consultas\\n👥 Respaldado por expertos humanos con +20 años experiencia\\n\\n*¿En qué te puedo ayudar hoy?*\\n• Productos y servicios\\n• Cotizaciones personalizadas\\n• Soporte técnico\\n• Información de contacto 😊`;
         }
 
-        // Respuesta por defecto para mensajes no reconocidos
-        return `🤔 Entiendo que necesitas ayuda, pero no estoy seguro de cómo responder a eso.\\n\\nPuedes:\\n• Escribir */help* para ver todos los comandos\\n• Escribir */menu* para las opciones principales\\n• Ser más específico en tu consulta\\n• Escribir */contacto* para hablar con una persona real\\n\\n¿Podrías reformular tu pregunta? 😊`;
+        // Respuesta por defecto especializada
+        return `🤔 Entiendo tu consulta sobre etiquetas térmicas y ribbons.\\n\\n🏷️ *Como especialistas en:*\\n• Etiquetas térmicas directas\\n• Ribbons de transferencia\\n• Impresoras Zebra, Honeywell, TSC\\n• Maquila e impresión\\n\\n*Opciones para ayudarte:*\\n• */productos* - Catálogo completo\\n• */cotizar* - Precio personalizado\\n• */contacto* - Hablar con especialista\\n\\n¿Podrías ser más específico? 😊`;
     }
 
     containsWords(text, words) {

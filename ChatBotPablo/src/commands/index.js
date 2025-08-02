@@ -26,20 +26,20 @@ class Commands {
 
     // COMANDO START/INICIO
     start(message, companyConfig) {
-        const welcomeMessage = `🤖 *¡Bienvenido al ${this.botName}!*\\n\\n` +
-                              `👋 Hola! Soy el asistente virtual de *${companyConfig.name}*\\n\\n` +
-                              `🚀 *¿Qué puedo hacer por ti?*\\n` +
-                              `• Información sobre productos y servicios\\n` +
-                              `• Datos de contacto\\n` +
-                              `• Horarios de atención\\n` +
-                              `• Solicitar cotizaciones\\n` +
-                              `• Responder preguntas frecuentes\\n` +
-                              `• Entretenerte con chistes y frases\\n` +
-                              `• Ayudarte con cálculos\\n` +
-                              `• Consultar el clima\\n\\n` +
+        const welcomeMessage = `🤖 *¡Bienvenido al ChatBot de ArcoExpress!*\\n\\n` +
+                              `👋 Hola! Soy tu asistente virtual especializado en *etiquetas térmicas y ribbons*\\n\\n` +
+                              `🏷️ *ArcoExpress de México - Más de 20 años de experiencia*\\n\\n` +
+                              `🚀 *¿En qué puedo ayudarte hoy?*\\n` +
+                              `• 🏷️ Etiquetas térmicas (directas y transferencia)\\n` +
+                              `• 🎗️ Ribbons (cera, resina y mixtos)\\n` +
+                              `• 🖨️ Impresoras Zebra, Honeywell, TSC\\n` +
+                              `• 🔧 Maquila e impresión de etiquetas\\n` +
+                              `• 📊 Códigos de barras y QR\\n` +
+                              `• 💰 Cotizaciones personalizadas\\n` +
+                              `• 🛠️ Soporte técnico especializado\\n\\n` +
                               `📋 Escribe */menu* para ver todas las opciones\\n` +
                               `❓ Escribe */help* si necesitas ayuda\\n\\n` +
-                              `¡Estoy aquí para ayudarte! 😊`;
+                              `*¡Somos expertos en identificación industrial!* 😊`;
         
         return {
             type: 'text',
@@ -49,27 +49,33 @@ class Commands {
 
     // COMANDO HELP/AYUDA
     help(message, companyConfig) {
-        const helpMessage = `📚 *GUÍA DE COMANDOS*\\n\\n` +
+        const helpMessage = `📚 *GUÍA DE COMANDOS ARCOEXPRESS*\\n\\n` +
                            `🔹 *COMANDOS BÁSICOS:*\\n` +
                            `• */start* - Mensaje de bienvenida\\n` +
                            `• */help* - Esta guía de ayuda\\n` +
                            `• */menu* - Menú principal\\n` +
-                           `• */info* - Información de ${companyConfig.name}\\n\\n` +
-                           `🔹 *INFORMACIÓN EMPRESARIAL:*\\n` +
-                           `• */productos* - Lista de productos\\n` +
-                           `• */servicios* - Lista de servicios\\n` +
+                           `• */info* - Información sobre ArcoExpress\\n\\n` +
+                           `🔹 *PRODUCTOS ESPECIALIZADOS:*\\n` +
+                           `• */productos* - Catálogo completo\\n` +
+                           `• */etiquetas* - Tipos de etiquetas térmicas\\n` +
+                           `• */ribbons* - Ribbons y cintas\\n` +
+                           `• */impresoras* - Equipos Zebra, Honeywell, TSC\\n\\n` +
+                           `🔹 *SERVICIOS PROFESIONALES:*\\n` +
+                           `• */servicios* - Servicios especializados\\n` +
+                           `• */maquila* - Servicio de maquila\\n` +
                            `• */contacto* - Datos de contacto\\n` +
                            `• */horarios* - Horarios de atención\\n` +
                            `• */cotizar* - Solicitar cotización\\n\\n` +
                            `🔹 *UTILIDADES:*\\n` +
+                           `• */soporte* - Soporte técnico\\n` +
                            `• */clima [ciudad]* - Consultar clima\\n` +
                            `• */hora* - Hora y fecha actual\\n` +
                            `• */calc [operación]* - Calculadora\\n\\n` +
                            `🔹 *ENTRETENIMIENTO:*\\n` +
                            `• */chiste* - Chiste aleatorio\\n` +
                            `• */frase* - Frase motivacional\\n\\n` +
-                           `💡 *Tip:* También puedes escribir mensajes normales y yo responderé de forma inteligente.\\n\\n` +
-                           `¿Necesitas ayuda con algo específico? ¡Solo pregunta! 😊`;
+                           `💡 *Tip:* También puedes preguntarme directamente sobre etiquetas, ribbons o impresoras.\\n\\n` +
+                           `¿Necesitas ayuda con identificación industrial? ¡Pregunta sin compromiso! 😊`;
         
         return {
             type: 'text',
@@ -79,17 +85,24 @@ class Commands {
 
     // COMANDO MENU
     menu(message, companyConfig) {
-        const menuMessage = `🎯 *MENÚ DE ${companyConfig.name.toUpperCase()}*\\n\\n` +
+        const menuMessage = `🎯 *MENÚ ARCOEXPRESS DE MÉXICO*\\n\\n` +
+                           `🏷️ *Especialistas en etiquetas térmicas desde hace 20+ años*\\n\\n` +
                            `Selecciona una opción escribiendo el comando:\\n\\n` +
                            `🏢 *INFORMACIÓN EMPRESARIAL:*\\n` +
-                           `• */info* - Sobre nosotros\\n` +
-                           `• */productos* - Nuestros productos\\n` +
-                           `• */servicios* - Nuestros servicios\\n` +
+                           `• */info* - Sobre ArcoExpress\\n` +
                            `• */contacto* - Contactanos\\n` +
                            `• */horarios* - Horarios de atención\\n\\n` +
-                           `💼 *COMERCIAL:*\\n` +
-                           `• */cotizar* - Solicitar cotización\\n` +
+                           `🏷️ *PRODUCTOS ESPECIALIZADOS:*\\n` +
+                           `• */productos* - Catálogo completo\\n` +
+                           `• */etiquetas* - Etiquetas térmicas\\n` +
+                           `• */ribbons* - Ribbons y cintas\\n` +
+                           `• */impresoras* - Zebra, Honeywell, TSC\\n\\n` +
+                           `🔧 *SERVICIOS PROFESIONALES:*\\n` +
+                           `• */servicios* - Todos los servicios\\n` +
+                           `• */maquila* - Maquila e impresión\\n` +
                            `• */soporte* - Soporte técnico\\n\\n` +
+                           `💼 *COMERCIAL:*\\n` +
+                           `• */cotizar* - Cotización personalizada\\n\\n` +
                            `🛠️ *HERRAMIENTAS:*\\n` +
                            `• */clima* - Consultar el clima\\n` +
                            `• */calc* - Calculadora\\n` +
@@ -109,13 +122,25 @@ class Commands {
 
     // COMANDO INFO - INFORMACIÓN DE LA EMPRESA
     info(message, companyConfig) {
-        const infoMessage = `🏢 *INFORMACIÓN DE ${companyConfig.name.toUpperCase()}*\\n\\n` +
-                           `📍 *Dirección:*\\n${companyConfig.address}\\n\\n` +
-                           `📞 *Teléfono:*\\n${companyConfig.phone}\\n\\n` +
-                           `📧 *Email:*\\n${companyConfig.email}\\n\\n` +
-                           `🌐 *Sitio Web:*\\n${companyConfig.website}\\n\\n` +
-                           `⏰ *Horarios de Atención:*\\n${companyConfig.businessHours.days}\\n${companyConfig.businessHours.start} - ${companyConfig.businessHours.end}\\n\\n` +
-                           `¿Te gustaría saber algo más específico? Escribe */menu* para ver más opciones. 😊`;
+        const infoMessage = `🏢 *ARCOEXPRESS DE MÉXICO*\\n\\n` +
+                           `🏷️ *Especialistas en etiquetas térmicas desde hace más de 20 años*\\n\\n` +
+                           `✅ *Nuestra experiencia:*\\n` +
+                           `• Más de 2 décadas en el mercado\\n` +
+                           `• Líderes en etiquetas térmicas\\n` +
+                           `• Distribuidores autorizados\\n` +
+                           `• Cobertura en todo México\\n\\n` +
+                           `🎯 *Nos especializamos en:*\\n` +
+                           `• Etiquetas térmicas directas\\n` +
+                           `• Etiquetas de transferencia térmica\\n` +
+                           `• Ribbons de cera, resina y mixtos\\n` +
+                           `• Impresoras Zebra, Honeywell, TSC\\n` +
+                           `• Maquila e impresión\\n` +
+                           `• Señalización industrial\\n\\n` +
+                           `📍 *Ubicación:* Puebla, México\\n` +
+                           `📞 *Teléfono:* +52 222 210 61 44\\n` +
+                           `📧 *Email:* ventas@arcoexpress.mx\\n` +
+                           `🌐 *Web:* arcoexpress.mx\\n\\n` +
+                           `¿Te gustaría conocer nuestros productos? Escribe */productos* 😊`;
         
         return {
             type: 'text',
@@ -125,21 +150,32 @@ class Commands {
 
     // COMANDO PRODUCTOS
     productos(message, companyConfig) {
-        if (!companyConfig.products || companyConfig.products.length === 0) {
-            return {
-                type: 'text',
-                content: `📦 *NUESTROS PRODUCTOS*\\n\\nActualmente estamos actualizando nuestro catálogo de productos.\\n\\nPara información detallada, contáctanos:\\n📞 ${companyConfig.phone}\\n📧 ${companyConfig.email}`
-            };
-        }
-
-        let productList = companyConfig.products.map((product, index) => `${index + 1}. ${product.trim()}`).join('\\n');
-        
-        const productsMessage = `📦 *NUESTROS PRODUCTOS*\\n\\n` +
-                               `${productList}\\n\\n` +
-                               `💡 *¿Necesitas más información?*\\n` +
-                               `• Escribe */cotizar* para solicitar presupuesto\\n` +
-                               `• Escribe */contacto* para hablar con un asesor\\n\\n` +
-                               `¡Estamos aquí para ayudarte! 😊`;
+        const productsMessage = `📦 *CATÁLOGO ARCOEXPRESS*\\n\\n` +
+                               `🏷️ *ETIQUETAS TÉRMICAS:*\\n` +
+                               `1. Etiquetas térmicas directas\\n` +
+                               `2. Etiquetas de transferencia térmica\\n` +
+                               `3. Etiquetas adhesivas permanentes\\n` +
+                               `4. Etiquetas para códigos de barras\\n` +
+                               `5. Etiquetas industriales especiales\\n\\n` +
+                               `🎗️ *RIBBONS Y CINTAS:*\\n` +
+                               `6. Ribbons de cera\\n` +
+                               `7. Ribbons de resina\\n` +
+                               `8. Ribbons mixtos\\n\\n` +
+                               `🖨️ *IMPRESORAS:*\\n` +
+                               `9. Impresoras Zebra (industriales y escritorio)\\n` +
+                               `10. Impresoras Honeywell (alta resistencia)\\n` +
+                               `11. Impresoras TSC (económicas y eficientes)\\n\\n` +
+                               `📝 *MATERIALES DISPONIBLES:*\\n` +
+                               `• Papel térmico directo\\n` +
+                               `• Sintético resistente\\n` +
+                               `• Poliéster premium\\n` +
+                               `• Polipropileno industrial\\n\\n` +
+                               `💡 *¿Necesitas información específica?*\\n` +
+                               `• */etiquetas* - Detalles de etiquetas\\n` +
+                               `• */ribbons* - Detalles de ribbons\\n` +
+                               `• */impresoras* - Información de equipos\\n` +
+                               `• */cotizar* - Solicitar presupuesto\\n\\n` +
+                               `¡Somos tu mejor opción en identificación industrial! 😊`;
         
         return {
             type: 'text',
@@ -149,21 +185,34 @@ class Commands {
 
     // COMANDO SERVICIOS
     servicios(message, companyConfig) {
-        if (!companyConfig.services || companyConfig.services.length === 0) {
-            return {
-                type: 'text',
-                content: `🔧 *NUESTROS SERVICIOS*\\n\\nActualmente estamos actualizando nuestro catálogo de servicios.\\n\\nPara información detallada, contáctanos:\\n📞 ${companyConfig.phone}\\n📧 ${companyConfig.email}`
-            };
-        }
-
-        let serviceList = companyConfig.services.map((service, index) => `${index + 1}. ${service.trim()}`).join('\\n');
-        
-        const servicesMessage = `🔧 *NUESTROS SERVICIOS*\\n\\n` +
-                                `${serviceList}\\n\\n` +
+        const servicesMessage = `🔧 *SERVICIOS ARCOEXPRESS*\\n\\n` +
+                                `🏷️ *SERVICIOS ESPECIALIZADOS:*\\n` +
+                                `1. 📄 Maquila e impresión de etiquetas\\n` +
+                                `2. 🏭 Señalización e identificación industrial\\n` +
+                                `3. 📦 Identificación de productos\\n` +
+                                `4. 🛠️ Soporte técnico especializado\\n` +
+                                `5. 📋 Consultoría en procesos de etiquetado\\n\\n` +
+                                `�️ *SERVICIOS DE IMPRESORAS:*\\n` +
+                                `6. 🦓 Servicio técnico Zebra\\n` +
+                                `7. 🏭 Servicio técnico Honeywell\\n` +
+                                `8. 🔧 Servicio técnico TSC\\n` +
+                                `9. 🛡️ Garantía extendida\\n` +
+                                `10. 📞 Soporte remoto\\n\\n` +
+                                `� *SOLUCIONES INTEGRALES:*\\n` +
+                                `• Diseño de etiquetas personalizadas\\n` +
+                                `• Implementación de códigos de barras\\n` +
+                                `• Capacitación en equipos\\n` +
+                                `• Asesoría en selección de materiales\\n\\n` +
+                                `� *BENEFICIOS ADICIONALES:*\\n` +
+                                `• Envíos a todo México\\n` +
+                                `• Entrega rápida\\n` +
+                                `• Precios competitivos\\n` +
+                                `• Calidad garantizada\\n\\n` +
                                 `💡 *¿Necesitas más información?*\\n` +
-                                `• Escribe */cotizar* para solicitar presupuesto\\n` +
-                                `• Escribe */contacto* para hablar con un especialista\\n\\n` +
-                                `¡Estamos aquí para ayudarte! 😊`;
+                                `• */maquila* - Detalles del servicio de maquila\\n` +
+                                `• */soporte* - Información de soporte técnico\\n` +
+                                `• */cotizar* - Solicitar presupuesto\\n\\n` +
+                                `¡Más de 20 años respaldando tu negocio! 😊`;
         
         return {
             type: 'text',
@@ -173,15 +222,26 @@ class Commands {
 
     // COMANDO CONTACTO
     contacto(message, companyConfig) {
-        const contactMessage = `📞 *DATOS DE CONTACTO*\\n\\n` +
-                              `🏢 *${companyConfig.name}*\\n\\n` +
-                              `📍 *Dirección:*\\n${companyConfig.address}\\n\\n` +
-                              `📞 *Teléfono:*\\n${companyConfig.phone}\\n\\n` +
-                              `📧 *Email:*\\n${companyConfig.email}\\n\\n` +
-                              `🌐 *Sitio Web:*\\n${companyConfig.website}\\n\\n` +
-                              `⏰ *Horarios:*\\n${companyConfig.businessHours.days}\\n${companyConfig.businessHours.start} - ${companyConfig.businessHours.end}\\n\\n` +
-                              `💬 *WhatsApp:*\\n${companyConfig.phone}\\n\\n` +
-                              `¡Contáctanos cuando gustes! Estamos aquí para ayudarte. 😊`;
+        const contactMessage = `📞 *CONTACTO ARCOEXPRESS*\\n\\n` +
+                              `🏢 *ArcoExpress de México*\\n` +
+                              `🏷️ *Especialistas en etiquetas térmicas*\\n\\n` +
+                              `📍 *Ubicación:*\\n` +
+                              `Puebla, México\\n\\n` +
+                              `📞 *Teléfonos:*\\n` +
+                              `• +52 222 210 61 44\\n` +
+                              `• +52 222 210 61 40\\n\\n` +
+                              `💬 *WhatsApp:*\\n` +
+                              `+52 222 750 68 55\\n\\n` +
+                              `📧 *Email:*\\n` +
+                              `ventas@arcoexpress.mx\\n\\n` +
+                              `🌐 *Sitio Web:*\\n` +
+                              `arcoexpress.mx\\n\\n` +
+                              `⏰ *Horarios:*\\n` +
+                              `Lunes a Viernes\\n` +
+                              `9:00 AM - 6:00 PM\\n\\n` +
+                              `� *Cobertura:*\\n` +
+                              `Envíos a todo México\\n\\n` +
+                              `¡Contáctanos cuando gustes! Tenemos más de 20 años de experiencia ayudando empresas con sus necesidades de identificación. 😊`;
         
         return {
             type: 'text',
@@ -191,13 +251,28 @@ class Commands {
 
     // COMANDO HORARIOS
     horarios(message, companyConfig) {
-        const horariosMessage = `⏰ *HORARIOS DE ATENCIÓN*\\n\\n` +
-                               `🏢 *${companyConfig.name}*\\n\\n` +
-                               `📅 *Días:* ${companyConfig.businessHours.days}\\n` +
-                               `🕐 *Horario:* ${companyConfig.businessHours.start} - ${companyConfig.businessHours.end}\\n\\n` +
-                               `💡 *Nota:* Fuera de horario laboral, este bot sigue activo 24/7 para responder tus consultas básicas.\\n\\n` +
-                               `📞 Para urgencias, puedes contactarnos al ${companyConfig.phone}`;
+        const horariosMessage = `⏰ *HORARIOS ARCOEXPRESS*\\n\\n` +
+                               `🏢 *ArcoExpress de México*\\n` +
+                               `🏷️ *Especialistas en etiquetas térmicas*\\n\\n` +
+                               `📅 *Días de atención:*\\n` +
+                               `Lunes a Viernes\\n\\n` +
+                               `� *Horario:*\\n` +
+                               `9:00 AM - 6:00 PM\\n\\n` +
+                               `💡 *Nota importante:*\\n` +
+                               `• Este chatbot está disponible 24/7\\n` +
+                               `• Para atención personalizada: horario laboral\\n` +
+                               `• WhatsApp: respuesta rápida garantizada\\n\\n` +
+                               `📞 *Contacto inmediato:*\\n` +
+                               `• WhatsApp: +52 222 750 68 55\\n` +
+                               `• Tel: +52 222 210 61 44\\n` +
+                               `• Email: ventas@arcoexpress.mx\\n\\n` +
+                               `¡Siempre listos para resolver tus dudas sobre etiquetas térmicas! 😊`;
         
+        return {
+            type: 'text',
+            content: horariosMessage
+        };
+    }
         return {
             type: 'text',
             content: horariosMessage
@@ -299,6 +374,259 @@ class Commands {
                 content: `❌ *Error en la operación*\\n\\nPor favor verifica que la operación sea válida.\\n\\n📝 *Ejemplos válidos:*\\n• 2 + 2\\n• 10 * 5\\n• 100 / 4`
             };
         }
+    }
+
+    // ========================================
+    // COMANDOS ESPECÍFICOS ARCOEXPRESS
+    // ========================================
+
+    // COMANDO ETIQUETAS TÉRMICAS
+    etiquetas(message) {
+        const etiquetasMessage = `🏷️ *ETIQUETAS TÉRMICAS ARCOEXPRESS*\\n\\n` +
+                                `📝 *TIPOS DISPONIBLES:*\\n\\n` +
+                                `1. 🔥 *Etiquetas Térmicas Directas*\\n` +
+                                `   • Impresión directa por calor\\n` +
+                                `   • Ideales para uso inmediato\\n` +
+                                `   • Económicas y eficientes\\n\\n` +
+                                `2. 🎗️ *Etiquetas de Transferencia Térmica*\\n` +
+                                `   • Requieren ribbon para impresión\\n` +
+                                `   • Mayor durabilidad\\n` +
+                                `   • Resistentes a factores ambientales\\n\\n` +
+                                `📊 *MATERIALES DISPONIBLES:*\\n` +
+                                `• 📄 Papel térmico directo\\n` +
+                                `• 🔧 Sintético resistente\\n` +
+                                `• 💎 Poliéster premium\\n` +
+                                `• 🏭 Polipropileno industrial\\n\\n` +
+                                `🔒 *TIPOS DE ADHESIVO:*\\n` +
+                                `• Permanente\\n` +
+                                `• Removible\\n` +
+                                `• Especiales\\n\\n` +
+                                `📏 *MEDIDAS:*\\n` +
+                                `• Medidas estándar disponibles\\n` +
+                                `• Medidas personalizadas\\n` +
+                                `• Consulta por medidas específicas\\n\\n` +
+                                `💡 *¿Necesitas más información?*\\n` +
+                                `• */cotizar* - Solicitar precio\\n` +
+                                `• */contacto* - Hablar con especialista\\n\\n` +
+                                `¡Más de 20 años perfeccionando etiquetas térmicas! 😊`;
+        
+        return {
+            type: 'text',
+            content: etiquetasMessage
+        };
+    }
+
+    // COMANDO RIBBONS
+    ribbons(message) {
+        const ribbonsMessage = `🎗️ *RIBBONS ARCOEXPRESS*\\n\\n` +
+                              `📝 *TIPOS DE RIBBONS:*\\n\\n` +
+                              `1. 🕯️ *Ribbons de Cera (Wax)*\\n` +
+                              `   • Papel térmico directo\\n` +
+                              `   • Impresión estándar\\n` +
+                              `   • Económicos\\n` +
+                              `   • Uso general\\n\\n` +
+                              `2. 💎 *Ribbons de Resina (Resin)*\\n` +
+                              `   • Materiales sintéticos\\n` +
+                              `   • Alta resistencia\\n` +
+                              `   • Durabilidad extrema\\n` +
+                              `   • Aplicaciones industriales\\n\\n` +
+                              `3. 🔀 *Ribbons Mixtos (Wax-Resin)*\\n` +
+                              `   • Combinación perfecta\\n` +
+                              `   • Versatilidad máxima\\n` +
+                              `   • Relación costo-beneficio\\n` +
+                              `   • Uso versátil\\n\\n` +
+                              `🖨️ *COMPATIBILIDAD:*\\n` +
+                              `• 🦓 Zebra (todos los modelos)\\n` +
+                              `• 🏭 Honeywell (serie completa)\\n` +
+                              `• 🔧 TSC (compatibilidad total)\\n` +
+                              `• Otras marcas disponibles\\n\\n` +
+                              `📏 *ANCHOS DISPONIBLES:*\\n` +
+                              `• 25mm, 40mm, 50mm, 83mm\\n` +
+                              `• 110mm, 156mm, 220mm\\n` +
+                              `• Medidas especiales bajo pedido\\n\\n` +
+                              `💡 *¿Qué ribbon necesitas?*\\n` +
+                              `• */cotizar* - Solicitar precio\\n` +
+                              `• */contacto* - Asesoría técnica\\n\\n` +
+                              `¡Ribbons de calidad mundial! 😊`;
+        
+        return {
+            type: 'text',
+            content: ribbonsMessage
+        };
+    }
+
+    // COMANDO IMPRESORAS
+    impresoras(message) {
+        const impresorasMessage = `🖨️ *IMPRESORAS ARCOEXPRESS*\\n\\n` +
+                                 `🦓 *ZEBRA - Líderes mundiales*\\n` +
+                                 `• ZD230, ZD420, ZD620 (escritorio)\\n` +
+                                 `• ZT230, ZT410, ZT510 (industriales)\\n` +
+                                 `• Serie móvil: ZQ320, ZQ630\\n` +
+                                 `• Garantía y soporte oficial\\n\\n` +
+                                 `🏭 *HONEYWELL - Resistencia industrial*\\n` +
+                                 `• PC23d, PC43d (escritorio)\\n` +
+                                 `• PM43, PM45 (industriales)\\n` +
+                                 `• Serie portátil disponible\\n` +
+                                 `• Tecnología de vanguardia\\n\\n` +
+                                 `🔧 *TSC - Excelente relación precio-calidad*\\n` +
+                                 `• TE200, TE300 (básicas)\\n` +
+                                 `• TTP-225, TTP-247 (escritorio)\\n` +
+                                 `• TTP-368MT, MEX200 (industriales)\\n` +
+                                 `• Ideales para PyMES\\n\\n` +
+                                 `🛠️ *SERVICIOS INCLUIDOS:*\\n` +
+                                 `• ✅ Instalación y configuración\\n` +
+                                 `• ✅ Capacitación de usuarios\\n` +
+                                 `• ✅ Soporte técnico especializado\\n` +
+                                 `• ✅ Garantía extendida\\n` +
+                                 `• ✅ Mantenimiento preventivo\\n\\n` +
+                                 `💰 *OPCIONES DE FINANCIAMIENTO:*\\n` +
+                                 `• Compra directa\\n` +
+                                 `• Planes de financiamiento\\n` +
+                                 `• Renta de equipos\\n\\n` +
+                                 `💡 *¿Qué impresora necesitas?*\\n` +
+                                 `• */cotizar* - Solicitar precio\\n` +
+                                 `• */contacto* - Asesoría técnica\\n\\n` +
+                                 `¡Distribuidores autorizados con más de 20 años de experiencia! 😊`;
+        
+        return {
+            type: 'text',
+            content: impresorasMessage
+        };
+    }
+
+    // COMANDO MAQUILA
+    maquila(message) {
+        const maquilaMessage = `🔧 *SERVICIO DE MAQUILA ARCOEXPRESS*\\n\\n` +
+                              `📋 *¿QUÉ ES LA MAQUILA?*\\n` +
+                              `Nosotros imprimimos tus etiquetas con tus diseños, textos, códigos de barras o logos específicos.\\n\\n` +
+                              `🏷️ *SERVICIOS DE MAQUILA:*\\n\\n` +
+                              `1. 📄 *Impresión de etiquetas personalizadas*\\n` +
+                              `   • Tus diseños y especificaciones\\n` +
+                              `   • Códigos de barras únicos\\n` +
+                              `   • Logos y texto variable\\n\\n` +
+                              `2. 📊 *Códigos de barras y QR*\\n` +
+                              `   • Numeración consecutiva\\n` +
+                              `   • Códigos únicos por producto\\n` +
+                              `   • Validación y calidad garantizada\\n\\n` +
+                              `3. 🎨 *Diseño personalizado*\\n` +
+                              `   • Creación de diseños nuevos\\n` +
+                              `   • Adaptación de diseños existentes\\n` +
+                              `   • Optimización para impresión\\n\\n` +
+                              `📈 *VOLÚMENES DE PRODUCCIÓN:*\\n` +
+                              `• Desde 1,000 etiquetas\\n` +
+                              `• Volúmenes medianos (10K-100K)\\n` +
+                              `• Grandes volúmenes (100K+)\\n` +
+                              `• Producción continua\\n\\n` +
+                              `⚡ *TIEMPOS DE ENTREGA:*\\n` +
+                              `• Urgentes: 24-48 horas\\n` +
+                              `• Estándar: 3-5 días hábiles\\n` +
+                              `• Grandes volúmenes: según cantidad\\n\\n` +
+                              `✅ *GARANTÍAS:*\\n` +
+                              `• Calidad de impresión garantizada\\n` +
+                              `• Materiales de primera calidad\\n` +
+                              `• Revisión antes de entrega\\n\\n` +
+                              `💡 *¿Necesitas servicio de maquila?*\\n` +
+                              `• */cotizar* - Solicitar presupuesto\\n` +
+                              `• */contacto* - Hablar con especialista\\n\\n` +
+                              `¡Más de 20 años produciendo etiquetas de calidad! 😊`;
+        
+        return {
+            type: 'text',
+            content: maquilaMessage
+        };
+    }
+
+    // COMANDO SOPORTE TÉCNICO
+    soporte(message) {
+        const soporteMessage = `🛠️ *SOPORTE TÉCNICO ARCOEXPRESS*\\n\\n` +
+                              `👨‍🔧 *EQUIPO ESPECIALIZADO*\\n` +
+                              `Más de 20 años de experiencia en etiquetas térmicas e impresoras industriales.\\n\\n` +
+                              `🔧 *SERVICIOS DE SOPORTE:*\\n\\n` +
+                              `1. 📞 *Soporte telefónico inmediato*\\n` +
+                              `   • Diagnóstico remoto\\n` +
+                              `   • Solución de problemas\\n` +
+                              `   • Configuración de equipos\\n\\n` +
+                              `2. 🏠 *Servicio en sitio*\\n` +
+                              `   • Visita técnica especializada\\n` +
+                              `   • Reparación en sus instalaciones\\n` +
+                              `   • Mantenimiento preventivo\\n\\n` +
+                              `3. 🔄 *Mantenimiento preventivo*\\n` +
+                              `   • Limpieza especializada\\n` +
+                              `   • Calibración de equipos\\n` +
+                              `   • Actualización de firmware\\n\\n` +
+                              `📋 *PROBLEMAS COMUNES QUE RESOLVEMOS:*\\n` +
+                              `• Calidad de impresión deficiente\\n` +
+                              `• Problemas de conectividad\\n` +
+                              `• Configuración de software\\n` +
+                              `• Instalación de drivers\\n` +
+                              `• Optimización de etiquetas\\n\\n` +
+                              `🖨️ *MARCAS QUE SOPORTAMOS:*\\n` +
+                              `• 🦓 Zebra (certificados)\\n` +
+                              `• 🏭 Honeywell (autorizados)\\n` +
+                              `• 🔧 TSC (especialistas)\\n` +
+                              `• Otras marcas disponibles\\n\\n` +
+                              `⚡ *TIEMPOS DE RESPUESTA:*\\n` +
+                              `• Telefónico: Inmediato\\n` +
+                              `• WhatsApp: < 30 minutos\\n` +
+                              `• Visita en sitio: 24-48 horas\\n\\n` +
+                              `📞 *¿NECESITAS SOPORTE AHORA?*\\n` +
+                              `• Tel: +52 222 210 61 44\\n` +
+                              `• WhatsApp: +52 222 750 68 55\\n` +
+                              `• Email: ventas@arcoexpress.mx\\n\\n` +
+                              `¡Tu tranquilidad es nuestra prioridad! 😊`;
+        
+        return {
+            type: 'text',
+            content: soporteMessage
+        };
+    }
+
+    // COMANDO COTIZAR MEJORADO
+    cotizar(message) {
+        const cotizarMessage = `💰 *COTIZACIÓN PERSONALIZADA ARCOEXPRESS*\\n\\n` +
+                              `📋 *PARA BRINDARTE EL MEJOR PRECIO NECESITAMOS:*\\n\\n` +
+                              `🏷️ *Si es ETIQUETA:*\\n` +
+                              `• Medidas (ancho x alto)\\n` +
+                              `• Material (papel, sintético, etc.)\\n` +
+                              `• Tipo de adhesivo\\n` +
+                              `• Cantidad requerida\\n` +
+                              `• Diseño o texto a imprimir\\n\\n` +
+                              `🎗️ *Si es RIBBON:*\\n` +
+                              `• Ancho del ribbon\\n` +
+                              `• Tipo (cera, resina, mixto)\\n` +
+                              `• Marca de impresora\\n` +
+                              `• Cantidad de rollos\\n\\n` +
+                              `🖨️ *Si es IMPRESORA:*\\n` +
+                              `• Volumen de impresión diario\\n` +
+                              `• Tipo de aplicación\\n` +
+                              `• Presupuesto aproximado\\n` +
+                              `• Marca preferida\\n\\n` +
+                              `🔧 *Si es SERVICIO DE MAQUILA:*\\n` +
+                              `• Cantidad de etiquetas\\n` +
+                              `• Diseño o especificaciones\\n` +
+                              `• Urgencia requerida\\n\\n` +
+                              `⚡ *FORMAS DE COTIZAR:*\\n\\n` +
+                              `1. 💬 *WhatsApp (RÁPIDO)*\\n` +
+                              `   +52 222 750 68 55\\n` +
+                              `   ¡Respuesta en minutos!\\n\\n` +
+                              `2. 📞 *Teléfono directo*\\n` +
+                              `   +52 222 210 61 44\\n` +
+                              `   Atención inmediata\\n\\n` +
+                              `3. 📧 *Email detallado*\\n` +
+                              `   ventas@arcoexpress.mx\\n` +
+                              `   Con especificaciones técnicas\\n\\n` +
+                              `🎯 *BENEFICIOS DE COTIZAR CON NOSOTROS:*\\n` +
+                              `• ✅ Más de 20 años de experiencia\\n` +
+                              `• ✅ Precios competitivos\\n` +
+                              `• ✅ Calidad garantizada\\n` +
+                              `• ✅ Envíos a todo México\\n` +
+                              `• ✅ Soporte técnico incluido\\n\\n` +
+                              `¡Contactanos ahora y obtén la mejor cotización del mercado! 😊`;
+        
+        return {
+            type: 'text',
+            content: cotizarMessage
+        };
     }
 
     // COMANDO CLIMA
