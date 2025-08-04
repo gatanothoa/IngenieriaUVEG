@@ -1,6 +1,6 @@
-# 🤖 ChatBot  - Railway Edition
+# 🤖 ChatBot de Antonio Córdova Carmona  - Railway Edition
 
-> ChatBot empresarial para WhatsApp especializado en etiquetas térmicas, ribbons e impresoras industriales.
+> ChatBot empresarial para WhatsApp, será una plantilla para futuros proyectos.
 
 [![Railway Deploy](https://img.shields.io/badge/Deploy-Railway-purple?style=for-the-badge&logo=railway)](https://railway.app)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-Twilio-green?style=for-the-badge&logo=whatsapp)](https://wa.me/14155238886?text=join%20ordinary-choose)
