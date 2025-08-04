@@ -1,0 +1,96 @@
+# ===============================================
+# CHATBOT ARCOEXPRESS - .gitignore OPTIMIZADO
+# ===============================================
+
+# Logs y archivos temporales
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de entorno (CRÍTICO para Railway)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.railway
+
+# Variables secretas (NUNCA subir a GitHub)
+config/secrets.js
+config/production.js
+
+# Datos del bot
+data/session/
+data/logs/
+data/backups/
+data/database.json
+data/statistics.json
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+.idea/
+
+# Archivos temporales de desarrollo
+temp/
+tmp/
+*.tmp
+*.temp
+
+# Logs de aplicación
+logs/
+*.log
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Testing
+coverage/
+.nyc_output/
+
+# ===============================================
+# ARCHIVOS OCULTOS EN VS CODE (no mostrar)
+# ===============================================
+
+# Dependencias (ya están en package.json)
+package-lock.json
+
+# Configuración de Node.js (opcional)
+.nvmrc
+
+# Carpeta src/ (codigo modular, usar si es necesario)
+# src/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos de build
+dist/
+build/
+.tmp/
+
+# Archivos de testing
+coverage/
+.nyc_output/
+
+# Dependencias opcionales
+.npm
+.node_repl_history
+
+# Archivos de lock específicos
+package-lock.json
+yarn.lock
+
+# Archivos de cache
+.cache/

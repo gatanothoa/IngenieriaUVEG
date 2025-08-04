@@ -1,0 +1,32 @@
+{
+  "name": "arcoexpress-chatbot",
+  "version": "1.0.0",
+  "description": "ChatBot ArcoExpress - Especialistas en etiquetas térmicas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "test": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "keywords": [
+    "chatbot",
+    "whatsapp",
+    "twilio",
+    "railway",
+    "arcoexpress",
+    "etiquetas",
+    "nodejs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatanothoa/IngenieriaUVEG.git"
+  },
+  "author": "Tiamat - UVEG",
+  "license": "MIT"
+}
