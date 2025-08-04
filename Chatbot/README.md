@@ -1,4 +1,4 @@
-# 🤖 ChatBot ArcoExpress - Railway Edition
+# 🤖 ChatBot  - Railway Edition
 
 > ChatBot empresarial para WhatsApp especializado en etiquetas térmicas, ribbons e impresoras industriales.
 
